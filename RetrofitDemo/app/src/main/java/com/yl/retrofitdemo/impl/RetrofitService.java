@@ -23,8 +23,7 @@ public interface RetrofitService {
      * @return Call<PostInfo>
      */
     @GET(Constant.UrlOrigin.get_post_info)
-    Call<PostInfo> getPostInfo(@Query("type") String type,
-                               @Query("postid") String postid);
+    Call<PostInfo> getPostInfo(@Query("type") String type, @Query("postid") String postid);
 
     /**
      * 获取快递信息
@@ -35,6 +34,5 @@ public interface RetrofitService {
      * @return Observable<PostInfo>
      */
     @GET(Constant.UrlOrigin.get_post_info)
-    Observable<PostInfo> getPostInfoRx(@Query("type") String type,
-                                       @Query("postid") String postid);
+    Observable<PostInfo> getPostInfoRx(@Query("type") String type, @Query("postid") String postid);
 }

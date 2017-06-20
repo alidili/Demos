@@ -8,10 +8,10 @@ import android.view.View;
 import com.google.gson.GsonBuilder;
 import com.yl.retrofitdemo.Constant;
 import com.yl.retrofitdemo.R;
-import com.yl.retrofitdemo.utils.RetrofitUtils;
 import com.yl.retrofitdemo.bean.PostInfo;
 import com.yl.retrofitdemo.impl.RetrofitService;
 import com.yl.retrofitdemo.manager.SendMessageManager;
+import com.yl.retrofitdemo.utils.RetrofitUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -84,9 +84,10 @@ public class MainActivity extends AppCompatActivity {
     private void baseRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.SERVER_URL)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
-                .client(RetrofitUtils.getOkHttpClient()) // 打印请求日志
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(RetrofitUtils.getOkHttpClient()) // 打印请求参数
                 .build();
+
         RetrofitService service = retrofit.create(RetrofitService.class);
         Call<PostInfo> call = service.getPostInfo("yuantong", "11111111111");
         call.enqueue(new Callback<PostInfo>() {
@@ -108,16 +109,16 @@ public class MainActivity extends AppCompatActivity {
     private void rxRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.SERVER_URL)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava
-                .client(RetrofitUtils.getOkHttpClient()) // 打印请求日志
+                .client(RetrofitUtils.getOkHttpClient()) // 打印请求参数
                 .build();
 
         RetrofitService service = retrofit.create(RetrofitService.class);
         Observable<PostInfo> observable = service.getPostInfoRx("yuantong", "11111111111");
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<PostInfo>() {
+        observable.subscribeOn(Schedulers.io()) // 在子线程中进行Http访问
+                .observeOn(AndroidSchedulers.mainThread()) // UI线程处理返回接口
+                .subscribe(new Observer<PostInfo>() { // 订阅
 
                     @Override
                     public void onCompleted() {

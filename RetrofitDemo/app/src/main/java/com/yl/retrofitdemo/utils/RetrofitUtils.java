@@ -14,7 +14,7 @@ public class RetrofitUtils {
 
     /**
      * 获取OkHttpClient
-     * 用于打印请求日志
+     * 用于打印请求参数
      *
      * @return OkHttpClient
      */

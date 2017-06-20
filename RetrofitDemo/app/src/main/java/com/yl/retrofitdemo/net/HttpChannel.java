@@ -2,12 +2,11 @@ package com.yl.retrofitdemo.net;
 
 import android.util.Log;
 
-import com.google.gson.GsonBuilder;
 import com.yl.retrofitdemo.Constant;
-import com.yl.retrofitdemo.utils.RetrofitUtils;
 import com.yl.retrofitdemo.bean.BaseBean;
 import com.yl.retrofitdemo.impl.RetrofitService;
 import com.yl.retrofitdemo.manager.ReceiveMessageManager;
+import com.yl.retrofitdemo.utils.RetrofitUtils;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -35,9 +34,9 @@ public class HttpChannel {
         // 初始化Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.SERVER_URL)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create())) // json解析
+                .addConverterFactory(GsonConverterFactory.create()) // json解析
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava
-                .client(RetrofitUtils.getOkHttpClient()) // 打印请求日志
+                .client(RetrofitUtils.getOkHttpClient()) // 打印请求参数
                 .build();
         retrofitService = retrofit.create(RetrofitService.class);
     }
