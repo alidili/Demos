@@ -8,6 +8,7 @@ import android.view.View;
 import com.google.gson.GsonBuilder;
 import com.yl.retrofitdemo.Constant;
 import com.yl.retrofitdemo.R;
+import com.yl.retrofitdemo.utils.RetrofitUtils;
 import com.yl.retrofitdemo.bean.PostInfo;
 import com.yl.retrofitdemo.impl.RetrofitService;
 import com.yl.retrofitdemo.manager.SendMessageManager;
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.SERVER_URL)
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+                .client(RetrofitUtils.getOkHttpClient()) // 打印请求日志
                 .build();
         RetrofitService service = retrofit.create(RetrofitService.class);
         Call<PostInfo> call = service.getPostInfo("yuantong", "11111111111");
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 .baseUrl(Constant.SERVER_URL)
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava
+                .client(RetrofitUtils.getOkHttpClient()) // 打印请求日志
                 .build();
 
         RetrofitService service = retrofit.create(RetrofitService.class);
