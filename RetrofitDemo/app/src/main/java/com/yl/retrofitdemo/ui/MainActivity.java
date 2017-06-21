@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
-import com.google.gson.GsonBuilder;
 import com.yl.retrofitdemo.Constant;
 import com.yl.retrofitdemo.R;
 import com.yl.retrofitdemo.bean.PostInfo;
@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<PostInfo>() {
             @Override
             public void onResponse(Call<PostInfo> call, Response<PostInfo> response) {
-                Log.i("http返回：", response.body().toString() + "");
+                Log.i("http返回：", response.body().toString());
+                Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -132,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(PostInfo postInfo) {
-                        Log.i("http返回：", postInfo.toString() + "");
+                        Log.i("http返回：", postInfo.toString());
+                        Toast.makeText(MainActivity.this, postInfo.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -146,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(PostInfo postInfo) {
-        Log.i("接收消息：", postInfo.toString() + "");
+        Log.i("接收消息：", postInfo.toString());
+        Toast.makeText(MainActivity.this, postInfo.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
