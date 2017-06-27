@@ -19,6 +19,6 @@ public class Constant {
         /**
          * 获取快递信息
          */
-        public static final String get_post_info = "query";
+        public static final String get_express_info = "query";
     }
 }

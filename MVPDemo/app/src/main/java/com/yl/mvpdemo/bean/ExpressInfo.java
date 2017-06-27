@@ -7,7 +7,7 @@ import java.util.List;
  * Created by yangle on 2017/6/26.
  */
 
-public class PostInfo extends BaseBean {
+public class ExpressInfo extends BaseBean {
 
     private String message;
     private String nu;
@@ -134,7 +134,7 @@ public class PostInfo extends BaseBean {
 
     @Override
     public String toString() {
-        return "PostInfo{" +
+        return "ExpressInfo{" +
                 "message='" + message + '\'' +
                 ", nu='" + nu + '\'' +
                 ", ischeck='" + ischeck + '\'' +
