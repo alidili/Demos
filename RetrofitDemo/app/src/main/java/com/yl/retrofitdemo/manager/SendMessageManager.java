@@ -5,7 +5,7 @@ import com.yl.retrofitdemo.bean.PostInfo;
 import com.yl.retrofitdemo.impl.RetrofitService;
 import com.yl.retrofitdemo.net.HttpChannel;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * 消息发送管理

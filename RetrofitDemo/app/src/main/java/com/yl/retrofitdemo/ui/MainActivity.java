@@ -1,6 +1,7 @@
 package com.yl.retrofitdemo.ui;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,16 +20,17 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * 主页
@@ -42,11 +44,15 @@ import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SendMessageManager sendMessageManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        sendMessageManager = SendMessageManager.getInstance();
     }
 
     @Override
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.SERVER_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) // 支持RxJava
                 .client(RetrofitUtils.getOkHttpClient()) // 打印请求参数
                 .build();
 
@@ -119,22 +125,26 @@ public class MainActivity extends AppCompatActivity {
         Observable<PostInfo> observable = service.getPostInfoRx("yuantong", "11111111111");
         observable.subscribeOn(Schedulers.io()) // 在子线程中进行Http访问
                 .observeOn(AndroidSchedulers.mainThread()) // UI线程处理返回接口
-                .subscribe(new Observer<PostInfo>() { // 订阅
-
+                .subscribe(new Observer<PostInfo>() {  // 订阅
                     @Override
-                    public void onCompleted() {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(PostInfo postInfo) {
+                    public void onNext(@NonNull PostInfo postInfo) {
                         Log.i("http返回：", postInfo.toString());
                         Toast.makeText(MainActivity.this, postInfo.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
     }
@@ -143,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
      * 封装使用
      */
     private void encapRequest() {
-        SendMessageManager.getInstance().getPostInfo("yuantong", "11111111111");
+        sendMessageManager.getPostInfo("yuantong", "11111111111");
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

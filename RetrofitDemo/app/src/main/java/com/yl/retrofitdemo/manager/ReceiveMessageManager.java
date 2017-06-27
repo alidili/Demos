@@ -25,11 +25,11 @@ public class ReceiveMessageManager {
     /**
      * 分发消息
      *
-     * @param baseBean Bean基类
-     * @param url      请求地址
+     * @param baseBean  Bean基类
+     * @param urlOrigin 请求地址
      */
-    public void dispatchMessage(BaseBean baseBean, String url) {
-        switch (url) {
+    public void dispatchMessage(BaseBean baseBean, String urlOrigin) {
+        switch (urlOrigin) {
             case Constant.UrlOrigin.get_post_info:
                 PostInfo postInfo = (PostInfo) baseBean;
                 EventBus.getDefault().post(postInfo);

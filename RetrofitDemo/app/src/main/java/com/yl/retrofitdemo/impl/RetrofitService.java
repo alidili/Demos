@@ -3,10 +3,10 @@ package com.yl.retrofitdemo.impl;
 import com.yl.retrofitdemo.Constant;
 import com.yl.retrofitdemo.bean.PostInfo;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * 请求参数接口
