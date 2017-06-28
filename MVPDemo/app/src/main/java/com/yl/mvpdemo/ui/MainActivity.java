@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.yl.mvpdemo.R;
 import com.yl.mvpdemo.bean.ExpressInfo;
 import com.yl.mvpdemo.presenter.ExpressPresenter;
@@ -25,7 +24,7 @@ import butterknife.OnClick;
  * JianShu：http://www.jianshu.com/u/34ece31cd6eb
  */
 
-public class MainActivity extends RxAppCompatActivity implements ExpressView {
+public class MainActivity extends BaseActivity implements ExpressView {
 
     @BindView(R.id.tv_post_info)
     TextView tvPostInfo;

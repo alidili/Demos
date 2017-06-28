@@ -17,16 +17,15 @@ import io.reactivex.schedulers.Schedulers;
  * Created by yangle on 2017/6/27.
  */
 
-public class ExpressPresenter {
+public class ExpressPresenter extends BasePresenter {
 
     private ExpressView expressView;
     private DataManager dataManager;
-    private LifecycleProvider<ActivityEvent> provider;
 
     public ExpressPresenter(ExpressView expressView, LifecycleProvider<ActivityEvent> provider) {
+        super(provider);
         this.expressView = expressView;
         dataManager = DataManager.getInstance();
-        this.provider = provider;
     }
 
     /**
@@ -39,7 +38,7 @@ public class ExpressPresenter {
         expressView.showProgressDialog();
 
         dataManager.getExpressInfo(type, postid)
-                .compose(provider.<ExpressInfo>bindUntilEvent(ActivityEvent.DESTROY))
+                .compose(getProvider().<ExpressInfo>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io()) // 在子线程中进行Http访问
                 .observeOn(AndroidSchedulers.mainThread()) // UI线程处理返回接口
                 .subscribe(new DefaultObserver<ExpressInfo>() {  // 订阅
