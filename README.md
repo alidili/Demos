@@ -13,3 +13,9 @@
 [《Android Retrofit + RxJava使用详解》](http://blog.csdn.net/kong_gu_you_lan/article/details/73504345)
 
 [《Android 探讨一下Retrofit封装的最佳姿势》](http://blog.csdn.net/kong_gu_you_lan/article/details/73733922)
+
+## MVPDemo
+
+[![](https://img.shields.io/badge/APK%20download-2.35M-green.svg)](https://github.com/alidili/Demos/raw/master/MVPDemo/MVPDemo.apk)
+
+[《Android 谈谈我所理解的MVP》](http://blog.csdn.net/kong_gu_you_lan/article/details/73848719)

@@ -7,7 +7,7 @@ import com.yl.mvpdemo.net.RetrofitService;
 import io.reactivex.Observable;
 
 /**
- * 封装RetrofitService中的方法
+ * 数据处理
  * Created by yangle on 2017/6/27.
  */
 
