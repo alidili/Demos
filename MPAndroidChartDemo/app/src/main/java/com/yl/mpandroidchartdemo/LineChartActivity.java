@@ -18,6 +18,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 主页
+ * Created by yangle on 2016/11/25.
+ * <p>
+ * Website：http://www.yangle.tech
+ * GitHub：https://github.com/alidili
+ * CSDN：http://blog.csdn.net/kong_gu_you_lan
+ * JianShu：http://www.jianshu.com/u/34ece31cd6eb
+ */
+
 public class LineChartActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvDate;
