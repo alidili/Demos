@@ -19,3 +19,9 @@
 [![](https://img.shields.io/badge/APK%20download-2.35M-green.svg)](https://github.com/alidili/Demos/raw/master/MVPDemo/MVPDemo.apk)
 
 [《Android 谈谈我所理解的MVP》](http://blog.csdn.net/kong_gu_you_lan/article/details/73848719)
+
+## MVPDemo
+
+[![](https://img.shields.io/badge/APK%20download-2.09M-green.svg)](https://github.com/alidili/Demos/raw/master/RxLifecycleDemo/RxLifecycleDemo.apk)
+
+[《Android 使用RxLifecycle解决RxJava内存泄漏》](http://blog.csdn.net/kong_gu_you_lan/article/details/74469041)
