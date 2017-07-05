@@ -1,22 +1,21 @@
 package com.yl.rxlifecycledemo;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.trello.navi2.component.NaviActivity;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.navi.NaviLifecycle;
 
-import butterknife.BindView;
+import java.util.concurrent.TimeUnit;
+
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.observers.DefaultObserver;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -25,9 +24,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class RxLifecycleNaviActivity extends NaviActivity {
-
-    @BindView(R.id.tv_content)
-    TextView tvContent;
 
     private final LifecycleProvider<ActivityEvent> provider
             = NaviLifecycle.createActivityLifecycleProvider(this);
@@ -42,21 +38,19 @@ public class RxLifecycleNaviActivity extends NaviActivity {
     }
 
     private void initData() {
-        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
-                // 假装耗时操作
-                e.onNext("我处理完了，你显示吧");
-            }
-        });
-        observable.compose(provider.<String>bindUntilEvent(ActivityEvent.DESTROY))
+        Observable.interval(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<String>() {
+                .compose(provider.<Long>bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(new Observer<Long>() {
                     @Override
-                    public void onNext(@NonNull String s) {
-                        Toast.makeText(RxLifecycleNaviActivity.this, s, Toast.LENGTH_SHORT).show();
-                        tvContent.setText("我显示了");
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Long aLong) {
+                        Log.i("接收数据", String.valueOf(aLong));
                     }
 
                     @Override
@@ -74,21 +68,19 @@ public class RxLifecycleNaviActivity extends NaviActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
-                // 假装耗时操作
-                e.onNext("我处理完了，你显示吧");
-            }
-        });
-        observable.compose(provider.<String>bindToLifecycle())
+        Observable.interval(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<String>() {
+                .compose(provider.<Long>bindToLifecycle())
+                .subscribe(new Observer<Long>() {
                     @Override
-                    public void onNext(@NonNull String s) {
-                        Toast.makeText(RxLifecycleNaviActivity.this, s, Toast.LENGTH_SHORT).show();
-                        tvContent.setText("我显示了");
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Long aLong) {
+                        Log.i("接收数据", String.valueOf(aLong));
                     }
 
                     @Override
