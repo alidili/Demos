@@ -20,7 +20,7 @@
 
 [《Android 谈谈我所理解的MVP》](http://blog.csdn.net/kong_gu_you_lan/article/details/73848719)
 
-## MVPDemo
+## RxLifecycleDemo
 
 [![](https://img.shields.io/badge/APK%20download-2.09M-green.svg)](https://github.com/alidili/Demos/raw/master/RxLifecycleDemo/RxLifecycleDemo.apk)
 
