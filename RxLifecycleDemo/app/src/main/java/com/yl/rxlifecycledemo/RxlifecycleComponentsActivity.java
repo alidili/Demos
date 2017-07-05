@@ -34,6 +34,7 @@ public class RxLifecycleComponentsActivity extends RxAppCompatActivity {
     }
 
     private void initData() {
+        // 每隔1s执行一次事件
         Observable.interval(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
