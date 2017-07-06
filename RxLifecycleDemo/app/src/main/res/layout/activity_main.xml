@@ -21,4 +21,12 @@
         android:text="rxlifecycle-navi"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/btn_lifecycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="rxlifecycle-android-lifecycle"
+        android:textAllCaps="false" />
+
 </LinearLayout>

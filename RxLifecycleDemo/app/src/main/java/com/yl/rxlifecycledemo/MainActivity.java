@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_components, R.id.btn_navi})
+    @OnClick({R.id.btn_components, R.id.btn_navi, R.id.btn_lifecycle})
     public void onViewClicked(View view) {
         Intent intent = null;
 
@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_navi:
                 intent = new Intent(this, RxLifecycleNaviActivity.class);
                 break;
+
+            case R.id.btn_lifecycle:
+                intent = new Intent(this, RxLifecycleActivity.class);
 
             default:
                 break;

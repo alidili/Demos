@@ -34,4 +34,5 @@ dependencies {
     compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
     compile 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
+    compile 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.1.0'
 }

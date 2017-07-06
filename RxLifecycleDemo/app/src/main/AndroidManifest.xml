@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".RxLifecycleComponentsActivity" />
         <activity android:name=".RxLifecycleNaviActivity" />
+        <activity android:name=".RxLifecycleActivity" />
     </application>
 
 </manifest>

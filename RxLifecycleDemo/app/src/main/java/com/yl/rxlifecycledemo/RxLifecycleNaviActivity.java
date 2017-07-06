@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * rxlifecycle-navi
+ * compile 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
  * Created by yangle on 2017/7/4.
  */
 
@@ -31,7 +31,7 @@ public class RxLifecycleNaviActivity extends NaviActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rxlifecycle_navi);
+        setContentView(R.layout.activity_rxlifecycle);
         ButterKnife.bind(this);
 
         initData();
