@@ -38,9 +38,9 @@ public class ExpressPresenter extends BasePresenter {
         expressView.showProgressDialog();
 
         dataManager.getExpressInfo(type, postid)
-                .compose(getProvider().<ExpressInfo>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io()) // 在子线程中进行Http访问
                 .observeOn(AndroidSchedulers.mainThread()) // UI线程处理返回接口
+                .compose(getProvider().<ExpressInfo>bindUntilEvent(ActivityEvent.DESTROY)) // onDestroy取消订阅
                 .subscribe(new DefaultObserver<ExpressInfo>() {  // 订阅
                     @Override
                     public void onNext(@NonNull ExpressInfo expressInfo) {
