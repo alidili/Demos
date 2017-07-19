@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.yl.databindingdemo.handler.EventHandler" />
+
+        <variable
+            name="task"
+            type="com.yl.databindingdemo.task.Task" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{handler::onClickFriend}"
+            android:text="方法调用" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{() -> handler.onTaskClick(task)}"
+            android:text="监听绑定" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{(view) -> handler.onTaskClick(view,task)}"
+            android:text="监听绑定_使用参数" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:onCheckedChanged="@{(checkBox, isChecked) -> handler.onCompletedChanged(task, isChecked)}" />
+
+    </LinearLayout>
+
+</layout>

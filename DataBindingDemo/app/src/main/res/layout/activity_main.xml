@@ -20,8 +20,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:onClick="@{clickListener}"
-            android:text="基本使用"
-            android:textAllCaps="false" />
+            android:text="基本使用" />
+
+        <Button
+            android:id="@+id/btn_event_handling"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{clickListener}"
+            android:text="事件处理" />
 
     </LinearLayout>
 

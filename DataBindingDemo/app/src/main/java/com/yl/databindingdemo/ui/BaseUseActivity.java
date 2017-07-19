@@ -1,11 +1,12 @@
-package com.yl.databindingdemo;
+package com.yl.databindingdemo.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.yl.databindingdemo.bean.StudentInfo;
+import com.yl.databindingdemo.R;
+import com.yl.databindingdemo.bean.User;
 import com.yl.databindingdemo.databinding.ActivityBaseUseBinding;
 
 /**
@@ -18,8 +19,12 @@ public class BaseUseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ActivityBaseUseBinding是根据布局名称自动生成的
+        // 代替原来的setContentView(R.layout.activity_base_use)方法
         ActivityBaseUseBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_base_use);
-        StudentInfo studentInfo = new StudentInfo("小明", 12);
-        binding.setStudentInfo(studentInfo);
+        User user = new User("容华", "谢后");
+        // set方法是根据data标签下的variable名称自动生成的
+        binding.setUser(user);
     }
 }
