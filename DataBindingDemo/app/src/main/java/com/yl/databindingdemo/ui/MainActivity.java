@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, EventHandlingActivity.class);
                         break;
 
+                    case R.id.btn_layout_detail: // 布局详情
+                        intent = new Intent(MainActivity.this, LayoutDetailActivity.class);
+                        break;
+
                     default:
                         break;
                 }

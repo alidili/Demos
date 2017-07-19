@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".ui.BaseUseActivity" />
         <activity android:name=".ui.EventHandlingActivity" />
+        <activity android:name=".ui.LayoutDetailActivity" />
     </application>
 
 </manifest>
