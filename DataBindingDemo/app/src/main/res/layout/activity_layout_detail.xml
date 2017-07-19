@@ -4,21 +4,47 @@
 
     <data>
 
+        <import type="java.util.List" />
+
         <import type="com.yl.databindingdemo.bean.User" />
 
         <variable
             name="user"
             type="User" />
+
+        <variable
+            name="userList"
+            type="List&lt;User&gt;" />
+
+        <variable
+            name="position"
+            type="int" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <include
             layout="@layout/layout_include"
             bind:user="@{user}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userList[position].toString()}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/full_name(user.firstName, user.lastName)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@plurals/orange(1, 2)}" />
 
     </LinearLayout>
 

@@ -3,29 +3,25 @@
 
     <data>
 
-        <import type="com.yl.databindingdemo.utils.StringUtils" />
-
-        <import type="com.yl.databindingdemo.bean.User" />
-
         <variable
             name="user"
-            type="User" />
+            type="com.yl.databindingdemo.bean.User" />
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.firstName}" />
+            android:text="@{user.firstName ?? user.lastName}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{StringUtils.capitalize(user.lastName)}" />
+            android:text="@{user.lastName}" />
 
     </LinearLayout>
 

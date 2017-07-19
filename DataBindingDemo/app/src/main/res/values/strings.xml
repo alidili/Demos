@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DataBindingDemo</string>
+    <string name="full_name">%1$s %2$s</string>
+
+    <plurals name="orange">
+        <item quantity="one"> Have an orange</item>
+        <item quantity="other">Have %d oranges</item>
+    </plurals>
 </resources>
