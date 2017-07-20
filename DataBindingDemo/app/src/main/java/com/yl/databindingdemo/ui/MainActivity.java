@@ -40,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, EventHandlingActivity.class);
                         break;
 
+                    case R.id.btn_observable: // 动态更新
+                        intent = new Intent(MainActivity.this, ObservableActivity.class);
+                        break;
+
+                    case R.id.btn_double_binding: // 双向绑定
+                        intent = new Intent(MainActivity.this, DoubleBindingActivity.class);
+                        break;
+
                     case R.id.btn_layout_detail: // 布局详情
                         intent = new Intent(MainActivity.this, LayoutDetailActivity.class);
                         break;

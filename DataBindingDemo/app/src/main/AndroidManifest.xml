@@ -18,6 +18,8 @@
         <activity android:name=".ui.BaseUseActivity" />
         <activity android:name=".ui.EventHandlingActivity" />
         <activity android:name=".ui.LayoutDetailActivity" />
+        <activity android:name=".ui.ObservableActivity" />
+        <activity android:name=".ui.DoubleBindingActivity" />
     </application>
 
 </manifest>
