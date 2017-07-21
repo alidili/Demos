@@ -24,6 +24,8 @@
         <activity android:name=".ui.DoubleBindingActivity" />
         <activity android:name=".ui.RecyclerViewActivity" />
         <activity android:name=".ui.CustomAttributeActivity" />
+        <activity android:name=".ui.MultiRecyclerViewActivity" />
+        <activity android:name=".ui.ViewStubActivity" />
     </application>
 
 </manifest>

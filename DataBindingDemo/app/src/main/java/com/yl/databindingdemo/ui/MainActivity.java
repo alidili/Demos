@@ -56,8 +56,16 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
                         break;
 
+                    case R.id.btn_multi_recycler_view: // 多布局RecyclerView
+                        intent = new Intent(MainActivity.this, MultiRecyclerViewActivity.class);
+                        break;
+
                     case R.id.btn_custom_attribute: // 自定义属性
                         intent = new Intent(MainActivity.this, CustomAttributeActivity.class);
+                        break;
+
+                    case R.id.btn_view_stub: // ViewStub
+                        intent = new Intent(MainActivity.this, ViewStubActivity.class);
                         break;
 
                     default:

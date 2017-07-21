@@ -8,70 +8,95 @@
             type="android.view.View.OnClickListener" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:scrollbars="none">
 
-        <Button
-            android:id="@+id/btn_base_use"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="基本使用" />
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_layout_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="布局详情" />
+            <Button
+                android:id="@+id/btn_base_use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="基本使用" />
 
-        <Button
-            android:id="@+id/btn_observable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="动态更新" />
+            <Button
+                android:id="@+id/btn_layout_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="布局详情" />
 
-        <Button
-            android:id="@+id/btn_double_binding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="双向绑定" />
+            <Button
+                android:id="@+id/btn_observable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="动态更新" />
 
-        <Button
-            android:id="@+id/btn_event_handling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="事件处理" />
+            <Button
+                android:id="@+id/btn_double_binding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="双向绑定" />
 
-        <Button
-            android:id="@+id/btn_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="RecyclerView"
-            android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btn_event_handling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="事件处理" />
 
-        <Button
-            android:id="@+id/btn_custom_attribute"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{clickListener}"
-            android:text="自定义属性"
-            android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btn_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="RecyclerView"
+                android:textAllCaps="false" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_multi_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="多布局RecyclerView"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_custom_attribute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="自定义属性"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_view_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{clickListener}"
+                android:text="ViewStub"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>
