@@ -25,3 +25,7 @@
 [![](https://img.shields.io/badge/APK%20download-2.09M-green.svg)](https://github.com/alidili/Demos/raw/master/RxLifecycleDemo/RxLifecycleDemo.apk)
 
 [《Android 使用RxLifecycle解决RxJava内存泄漏》](http://blog.csdn.net/kong_gu_you_lan/article/details/74469041)
+
+## DataBindingDemo
+
+[《Android DataBinding使用详解（一）》](http://blog.csdn.net/kong_gu_you_lan/article/details/75628465)

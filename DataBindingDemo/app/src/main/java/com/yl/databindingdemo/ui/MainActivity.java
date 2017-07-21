@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, BaseUseActivity.class);
                         break;
 
-                    case R.id.btn_event_handling: // 事件处理
-                        intent = new Intent(MainActivity.this, EventHandlingActivity.class);
+                    case R.id.btn_layout_detail: // 布局详情
+                        intent = new Intent(MainActivity.this, LayoutDetailActivity.class);
                         break;
 
                     case R.id.btn_observable: // 动态更新
@@ -48,8 +48,16 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, DoubleBindingActivity.class);
                         break;
 
-                    case R.id.btn_layout_detail: // 布局详情
-                        intent = new Intent(MainActivity.this, LayoutDetailActivity.class);
+                    case R.id.btn_event_handling: // 事件处理
+                        intent = new Intent(MainActivity.this, EventHandlingActivity.class);
+                        break;
+
+                    case R.id.btn_recycler_view: // RecyclerView
+                        intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                        break;
+
+                    case R.id.btn_custom_attribute: // 自定义属性
+                        intent = new Intent(MainActivity.this, CustomAttributeActivity.class);
                         break;
 
                     default:

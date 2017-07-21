@@ -54,6 +54,24 @@
             android:onClick="@{clickListener}"
             android:text="事件处理" />
 
+        <Button
+            android:id="@+id/btn_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{clickListener}"
+            android:text="RecyclerView"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_custom_attribute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{clickListener}"
+            android:text="自定义属性"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </layout>
