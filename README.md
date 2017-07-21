@@ -28,4 +28,6 @@
 
 ## DataBindingDemo
 
+[![](https://img.shields.io/badge/APK%20download-1.83M-green.svg)](https://github.com/alidili/Demos/raw/master/DataBindingDemo/DataBindingDemo.apk)
+
 [《Android DataBinding使用详解（一）》](http://blog.csdn.net/kong_gu_you_lan/article/details/75628465)
