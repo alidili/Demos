@@ -17,11 +17,11 @@ public class ImageUtils {
      * 加载图片
      * 无需手动调用此方法
      *
-     * @param view     ImageView
-     * @param imageUrl 图片地址
+     * @param view ImageView
+     * @param url  图片地址
      */
     @BindingAdapter({"imageUrl"})
-    public static void loadImage(ImageView view, String imageUrl) {
-        Glide.with(view.getContext()).load(imageUrl).into(view);
+    public static void loadImage(ImageView view, String url) {
+        Glide.with(view.getContext()).load(url).into(view);
     }
 }

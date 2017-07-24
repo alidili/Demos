@@ -21,6 +21,6 @@ public class CustomAttributeActivity extends AppCompatActivity {
 
         ActivityCustomAttributeBinding binding = DataBindingUtil.setContentView(this,
                 R.layout.activity_custom_attribute);
-        binding.setImageUrl("http://i7.qhmsg.com/t01b48a6f15bf0cf5c1.jpg");
+        binding.setUrl("http://i7.qhmsg.com/t01b48a6f15bf0cf5c1.jpg");
     }
 }

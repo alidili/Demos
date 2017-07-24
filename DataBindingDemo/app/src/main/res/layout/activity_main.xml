@@ -23,7 +23,10 @@
                 android:id="@+id/btn_base_use"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
                 android:onClick="@{clickListener}"
                 android:text="基本使用" />
 
