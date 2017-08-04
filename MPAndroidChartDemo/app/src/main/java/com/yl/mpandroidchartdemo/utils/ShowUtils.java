@@ -61,7 +61,7 @@ public class ShowUtils {
         view = activity.getLayoutInflater().inflate(R.layout.layout_popup_window, null);
         //通过view和宽·高，构造popupWindow
         popupWindow = new PopupWindow(view, width, height);
-        popupWindow.setFocusable(false);
+        popupWindow.setFocusable(true);
         //popupWindow.setBackgroundDrawable(new BitmapDrawable());
         //设置window视图的位置
         popupWindow.showAsDropDown(targetView);
