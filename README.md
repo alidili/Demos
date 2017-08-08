@@ -34,6 +34,12 @@
 
 [《Android DataBinding使用详解（二）》](http://blog.csdn.net/kong_gu_you_lan/article/details/76020050)
 
+## MVVMDemo
+
+[![](https://img.shields.io/badge/APK%20download-2.46M-green.svg)](https://github.com/alidili/Demos/raw/master/MVVMDemo/MVVMDemo.apk)
+
+[《Android DataBinding & MVVM》](http://blog.csdn.net/kong_gu_you_lan/article/details/76906630)
+
 ## License
 
 ```

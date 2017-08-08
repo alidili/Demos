@@ -1,6 +1,5 @@
 package com.yl.mvvmdemo.viewmodel;
 
-import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
@@ -22,18 +21,16 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ExpressViewModel extends BaseViewModel {
 
-    private Context context;
     public ExpressInfo expressInfo;
     private DataManager dataManager;
 
     // 是否显示Loading
     public final ObservableBoolean isShowLoading = new ObservableBoolean();
+    // 错误信息
     public final ObservableField<String> errorMessage = new ObservableField<>();
 
-    public ExpressViewModel(LifecycleProvider<ActivityEvent> provider, Context context,
-                            ActivityMainBinding binding) {
+    public ExpressViewModel(LifecycleProvider<ActivityEvent> provider, ActivityMainBinding binding) {
         super(provider);
-        this.context = context;
         expressInfo = new ExpressInfo();
         binding.setExpressViewModel(this);
         dataManager = DataManager.getInstance();

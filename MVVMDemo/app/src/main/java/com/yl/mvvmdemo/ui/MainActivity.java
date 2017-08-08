@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        expressViewModel = new ExpressViewModel(this, this, binding);
+        expressViewModel = new ExpressViewModel(this, binding);
         binding.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
