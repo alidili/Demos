@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="expressInfo"
-            type="com.yl.mvvmdemo.bean.ExpressInfo" />
+            name="expressViewModel"
+            type="com.yl.mvvmdemo.viewmodel.ExpressViewModel" />
 
         <variable
             name="clickListener"
@@ -22,7 +22,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:text="@{expressInfo.expressInfo}" />
+            android:text="@{expressViewModel.expressInfo.data[0].context}" />
 
         <Button
             android:layout_width="match_parent"

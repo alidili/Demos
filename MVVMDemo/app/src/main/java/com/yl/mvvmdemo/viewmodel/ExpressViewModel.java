@@ -23,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 public class ExpressViewModel extends BaseViewModel {
 
     private Context context;
-    private ExpressInfo expressInfo;
+    public ExpressInfo expressInfo;
     private DataManager dataManager;
 
     // 是否显示Loading
@@ -35,7 +35,7 @@ public class ExpressViewModel extends BaseViewModel {
         super(provider);
         this.context = context;
         expressInfo = new ExpressInfo();
-        binding.setExpressInfo(expressInfo);
+        binding.setExpressViewModel(this);
         dataManager = DataManager.getInstance();
     }
 
@@ -55,7 +55,7 @@ public class ExpressViewModel extends BaseViewModel {
                 .subscribe(new DefaultObserver<ExpressInfo>() {  // 订阅
                     @Override
                     public void onNext(@NonNull ExpressInfo expressInfo) {
-                        ExpressViewModel.this.expressInfo.setExpressInfo(expressInfo.toString());
+                        ExpressViewModel.this.expressInfo.setExpressInfo(expressInfo);
                     }
 
                     @Override

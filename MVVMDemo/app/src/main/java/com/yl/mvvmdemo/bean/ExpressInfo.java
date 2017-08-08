@@ -4,6 +4,7 @@ import android.databinding.Bindable;
 
 import com.android.databinding.library.baseAdapters.BR;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,6 @@ import java.util.List;
 
 public class ExpressInfo extends BaseBean {
 
-    private String expressInfo;
     private String message;
     private String nu;
     private String ischeck;
@@ -23,14 +23,15 @@ public class ExpressInfo extends BaseBean {
     private String state;
     private List<DataBean> data;
 
-    @Bindable
-    public String getExpressInfo() {
-        return expressInfo;
-    }
-
-    public void setExpressInfo(String expressInfo) {
-        this.expressInfo = expressInfo;
-        notifyPropertyChanged(BR.expressInfo);
+    public void setExpressInfo(ExpressInfo expressInfo) {
+        setMessage(expressInfo.getMessage());
+        setNu(expressInfo.getNu());
+        setIscheck(expressInfo.getIscheck());
+        setCondition(expressInfo.getCondition());
+        setCom(expressInfo.getCom());
+        setStatus(expressInfo.getStatus());
+        setState(expressInfo.getState());
+        setData(expressInfo.getData());
     }
 
     @Bindable
@@ -105,7 +106,7 @@ public class ExpressInfo extends BaseBean {
 
     @Bindable
     public List<DataBean> getData() {
-        return data;
+        return data == null ? new ArrayList<DataBean>() : data;
     }
 
     public void setData(List<DataBean> data) {
@@ -113,51 +114,43 @@ public class ExpressInfo extends BaseBean {
         notifyPropertyChanged(BR.data);
     }
 
-    public static class DataBean extends BaseBean {
+    public class DataBean {
 
         private String time;
         private String ftime;
         private String context;
         private Object location;
 
-        @Bindable
         public String getTime() {
             return time;
         }
 
         public void setTime(String time) {
             this.time = time;
-            notifyPropertyChanged(BR.time);
         }
 
-        @Bindable
         public String getFtime() {
             return ftime;
         }
 
         public void setFtime(String ftime) {
             this.ftime = ftime;
-            notifyPropertyChanged(BR.ftime);
         }
 
-        @Bindable
         public String getContext() {
             return context;
         }
 
         public void setContext(String context) {
             this.context = context;
-            notifyPropertyChanged(BR.context);
         }
 
-        @Bindable
         public Object getLocation() {
             return location;
         }
 
         public void setLocation(Object location) {
             this.location = location;
-            notifyPropertyChanged(BR.location);
         }
 
         @Override
