@@ -40,6 +40,10 @@
 
 [《Android DataBinding & MVVM》](http://blog.csdn.net/kong_gu_you_lan/article/details/76906630)
 
+## UiAutomatorDemo
+
+[《Android自动化测试工具 UiAutomator使用详解》](http://blog.csdn.net/kong_gu_you_lan/article/details/77197944)
+
 ## License
 
 ```
