@@ -15,6 +15,7 @@ import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -76,7 +77,6 @@ public class FillBlankView extends RelativeLayout {
 
         // 获取课文内容
         content = new SpannableStringBuilder(originContent);
-
         // 答案范围集合
         rangeList = answerRangeList;
 
@@ -96,7 +96,6 @@ public class FillBlankView extends RelativeLayout {
         blankClickableSpanList = new ArrayList<>();
         for (int i = 0; i < rangeList.size(); i++) {
             AnswerRange range = rangeList.get(i);
-
             BlankClickableSpan blankClickableSpan = new BlankClickableSpan(i);
             content.setSpan(blankClickableSpan, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             blankClickableSpanList.add(blankClickableSpan);
@@ -130,7 +129,7 @@ public class FillBlankView extends RelativeLayout {
                 etInput.setSelection(oldAnswer.length());
             }
 
-            new AlertDialog.Builder(context, R.style.DialogStyle)
+            AlertDialog dialog = new AlertDialog.Builder(context, R.style.DialogStyle)
                     .setTitle("请输入答案")
                     .setView(view)
                     .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
@@ -142,11 +141,22 @@ public class FillBlankView extends RelativeLayout {
                                 return;
                             }
 
+                            // 填写答案
                             fillAnswer(answer, position);
                         }
                     })
-                    .create()
-                    .show();
+                    .create();
+
+            // Dialog弹出后显示软键盘
+            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface dialog) {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            });
+            dialog.show();
         }
 
         @Override
@@ -184,7 +194,6 @@ public class FillBlankView extends RelativeLayout {
         // 答案设置下划线
         content.setSpan(new UnderlineSpan(),
                 currentRange.start, currentRange.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tvContent.setText(content);
 
         // 将答案添加到集合中
         answerList.set(position, answer.replace(" ", ""));
@@ -214,11 +223,11 @@ public class FillBlankView extends RelativeLayout {
                     content.setSpan(new UnderlineSpan(),
                             nextRange.start, nextRange.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
-
-                // 更新下一个答案的点击范围
-                tvContent.setText(content);
             }
         }
+
+        // 更新内容
+        tvContent.setText(content);
     }
 
     /**
