@@ -14,8 +14,11 @@ import butterknife.ButterKnife;
  * Created by yangle on 2017/9/2.
  * <p>
  * Website：http://www.yangle.tech
+ * <p>
  * GitHub：https://github.com/alidili
+ * <p>
  * CSDN：http://blog.csdn.net/kong_gu_you_lan
+ * <p>
  * JianShu：http://www.jianshu.com/u/34ece31cd6eb
  */
 
@@ -34,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        String content = "纷纷扬扬的_____下了半尺多厚。天地间_____的一片。我顺着_____工地走了四十多公里，" +
+        String content = "纷纷扬扬的________下了半尺多厚。天地间________的一片。我顺着________工地走了四十多公里，" +
                 "只听见各种机器的吼声，可是看不见人影，也看不见工点。一进灵官峡，我就心里发慌。";
 
         // 答案范围集合
         List<AnswerRange> rangeList = new ArrayList<>();
-        rangeList.add(new AnswerRange(5, 10));
-        rangeList.add(new AnswerRange(20, 25));
-        rangeList.add(new AnswerRange(32, 37));
+        rangeList.add(new AnswerRange(5, 13));
+        rangeList.add(new AnswerRange(23, 31));
+        rangeList.add(new AnswerRange(38, 46));
 
         fbvContent.setData(content, rangeList);
     }

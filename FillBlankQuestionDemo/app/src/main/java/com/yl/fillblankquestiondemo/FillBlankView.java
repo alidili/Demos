@@ -1,9 +1,8 @@
 package com.yl.fillblankquestiondemo;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
-import android.support.v7.app.AlertDialog;
+import android.graphics.drawable.PaintDrawable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -13,20 +12,24 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 填空题
- * Created by yangle on 2017/8/30.
+ * Created by yangle on 2017/9/2.
  */
 
 public class FillBlankView extends RelativeLayout {
@@ -82,7 +85,7 @@ public class FillBlankView extends RelativeLayout {
 
         // 设置下划线颜色
         for (AnswerRange range : rangeList) {
-            ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor("#83AFF3"));
+            ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor("#4DB6AC"));
             content.setSpan(colorSpan, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
@@ -119,8 +122,9 @@ public class FillBlankView extends RelativeLayout {
 
         @Override
         public void onClick(final View widget) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.layout_input, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.layout_input, null);
             final EditText etInput = (EditText) view.findViewById(R.id.et_answer);
+            Button btnFillBlank = (Button) view.findViewById(R.id.btn_fill_blank);
 
             // 显示原有答案
             String oldAnswer = answerList.get(position);
@@ -129,34 +133,30 @@ public class FillBlankView extends RelativeLayout {
                 etInput.setSelection(oldAnswer.length());
             }
 
-            AlertDialog dialog = new AlertDialog.Builder(context, R.style.DialogStyle)
-                    .setTitle("请输入答案")
-                    .setView(view)
-                    .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String answer = etInput.getText().toString();
-                            if (TextUtils.isEmpty(answer)) {
-                                Toast.makeText(context, "答案不能为空", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
+            final PopupWindow popupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT, dp2px(40));
+            // 获取焦点
+            popupWindow.setFocusable(true);
+            // 为了防止弹出菜单获取焦点之后，点击Activity的其他组件没有响应
+            popupWindow.setBackgroundDrawable(new PaintDrawable());
+            // 设置PopupWindow在软键盘的上方
+            popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            // 弹出PopupWindow
+            popupWindow.showAtLocation(tvContent, Gravity.BOTTOM, 0, 0);
 
-                            // 填写答案
-                            fillAnswer(answer, position);
-                        }
-                    })
-                    .create();
-
-            // Dialog弹出后显示软键盘
-            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            btnFillBlank.setOnClickListener(new OnClickListener() {
                 @Override
-                public void onShow(DialogInterface dialog) {
-                    InputMethodManager inputMethodManager =
-                            (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                public void onClick(View v) {
+                    // 填写答案
+                    String answer = etInput.getText().toString();
+                    fillAnswer(answer, position);
+                    popupWindow.dismiss();
                 }
             });
-            dialog.show();
+
+            // 显示软键盘
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
         }
 
         @Override
@@ -237,5 +237,16 @@ public class FillBlankView extends RelativeLayout {
      */
     public List<String> getAnswerList() {
         return answerList;
+    }
+
+    /**
+     * dp转px
+     *
+     * @param dp dp值
+     * @return px值
+     */
+    private int dp2px(float dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                getResources().getDisplayMetrics());
     }
 }

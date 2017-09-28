@@ -2,13 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E4E7E9"
     android:orientation="horizontal">
 
     <EditText
         android:id="@+id/et_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:textColor="#59676E" />
+
+    <Button
+        android:id="@+id/btn_fill_blank"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="#4DB6AC"
+        android:text="确定"
+        android:textColor="#FFF" />
 
 </LinearLayout>
