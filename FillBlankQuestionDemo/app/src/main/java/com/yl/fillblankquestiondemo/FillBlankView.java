@@ -40,8 +40,6 @@ public class FillBlankView extends RelativeLayout {
     private List<String> answerList;
     // 答案范围集合
     private List<AnswerRange> rangeList;
-    // 答案填空处ClickableSpan对象集合
-    private List<BlankClickableSpan> blankClickableSpanList;
     // 填空题内容
     private SpannableStringBuilder content;
 
@@ -96,12 +94,10 @@ public class FillBlankView extends RelativeLayout {
         }
 
         // 设置填空处点击事件
-        blankClickableSpanList = new ArrayList<>();
         for (int i = 0; i < rangeList.size(); i++) {
             AnswerRange range = rangeList.get(i);
             BlankClickableSpan blankClickableSpan = new BlankClickableSpan(i);
             content.setSpan(blankClickableSpan, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            blankClickableSpanList.add(blankClickableSpan);
         }
 
         // 设置此方法后，点击事件才能生效
@@ -175,21 +171,13 @@ public class FillBlankView extends RelativeLayout {
     private void fillAnswer(String answer, int position) {
         answer = " " + answer + " ";
 
-        // 移除原来的点击事件
-        content.removeSpan(blankClickableSpanList.get(position));
-
         // 替换答案
         AnswerRange range = rangeList.get(position);
         content.replace(range.start, range.end, answer);
 
         // 更新当前的答案范围
-        AnswerRange currentRange = new AnswerRange(range.start,
-                range.start + answer.length());
+        AnswerRange currentRange = new AnswerRange(range.start, range.start + answer.length());
         rangeList.set(position, currentRange);
-
-        // 重新设置点击事件
-        content.setSpan(new BlankClickableSpan(position), currentRange.start, currentRange.end,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         // 答案设置下划线
         content.setSpan(new UnderlineSpan(),
@@ -197,6 +185,9 @@ public class FillBlankView extends RelativeLayout {
 
         // 将答案添加到集合中
         answerList.set(position, answer.replace(" ", ""));
+
+        // 更新内容
+        tvContent.setText(content);
 
         for (int i = 0; i < rangeList.size(); i++) {
             if (i > position) {
@@ -206,28 +197,12 @@ public class FillBlankView extends RelativeLayout {
                 // 计算新旧答案字数的差值
                 int difference = currentRange.end - range.end;
 
-                // 移除原来的点击事件
-                content.removeSpan(blankClickableSpanList.get(i));
-
                 // 更新下一个答案的范围
                 AnswerRange nextRange = new AnswerRange(oldNextRange.start + difference,
                         oldNextRange.start + difference + oldNextAmount);
                 rangeList.set(i, nextRange);
-
-                // 重新设置点击事件
-                content.setSpan(new BlankClickableSpan(i), nextRange.start, nextRange.end,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                if (!TextUtils.isEmpty(answerList.get(i))) {
-                    // 答案设置下划线
-                    content.setSpan(new UnderlineSpan(),
-                            nextRange.start, nextRange.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                }
             }
         }
-
-        // 更新内容
-        tvContent.setText(content);
     }
 
     /**
