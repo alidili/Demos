@@ -44,6 +44,12 @@
 
 [《Android自动化测试工具 UiAutomator使用详解》](http://blog.csdn.net/kong_gu_you_lan/article/details/77197944)
 
+## FillBlankQuestionDemo
+
+[![](https://img.shields.io/badge/APK%20download-1.48M-green.svg)](https://github.com/alidili/Demos/raw/master/FillBlankQuestionDemo/FillBlankQuestionDemo.apk)
+
+[《Android 使用代码实现一个填空题》](http://blog.csdn.net/kong_gu_you_lan/article/details/78134068)
+
 ## License
 
 ```
