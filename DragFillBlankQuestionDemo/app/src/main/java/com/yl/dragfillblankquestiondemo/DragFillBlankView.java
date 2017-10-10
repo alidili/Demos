@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  * 拖拽填空题
- * Created by yangle on 2017/8/30.
+ * Created by yangle on 2017/10/9.
  */
 
 public class DragFillBlankView extends RelativeLayout implements View.OnDragListener,
