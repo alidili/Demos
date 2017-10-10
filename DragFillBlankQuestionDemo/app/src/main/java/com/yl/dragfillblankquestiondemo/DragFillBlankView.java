@@ -345,7 +345,7 @@ public class DragFillBlankView extends RelativeLayout implements View.OnDragList
     }
 
     /**
-     * 点击事件
+     * 触摸事件
      */
     class BlankClickableSpan extends ClickableSpan {
 
