@@ -6,6 +6,8 @@
 
 [《Android图表 MPAndroidChart折线图》](http://blog.csdn.net/kong_gu_you_lan/article/details/53634368)
 
+![折线图](http://upload-images.jianshu.io/upload_images/3270074-3927ef98caa3508b.gif?imageMogr2/auto-orient/strip)
+
 ## RetrofitDemo
 
 [![](https://img.shields.io/badge/APK%20download-1.93M-green.svg)](https://github.com/alidili/Demos/raw/master/RetrofitDemo/RetrofitDemo.apk)
@@ -44,17 +46,23 @@
 
 [《Android自动化测试工具 UiAutomator使用详解》](http://blog.csdn.net/kong_gu_you_lan/article/details/77197944)
 
+![打开关于手机](http://upload-images.jianshu.io/upload_images/3270074-0cf4967c2f2c4033.gif?imageMogr2/auto-orient/strip)
+
 ## FillBlankQuestionDemo
 
 [![](https://img.shields.io/badge/APK%20download-1.48M-green.svg)](https://github.com/alidili/Demos/raw/master/FillBlankQuestionDemo/FillBlankQuestionDemo.apk)
 
 [《Android 使用代码实现一个填空题》](http://blog.csdn.net/kong_gu_you_lan/article/details/78134068)
 
+![填空题](http://upload-images.jianshu.io/upload_images/3270074-8bb46edbb4244870.gif?imageMogr2/auto-orient/strip)
+
 ## DragFillBlankQuestionDemo
 
 [![](https://img.shields.io/badge/APK%20download-1.49M-green.svg)](https://github.com/alidili/Demos/raw/master/DragFillBlankQuestionDemo/DragFillBlankQuestionDemo.apk)
 
 [《Android 使用代码实现一个选词（拖拽）填空题》](http://blog.csdn.net/kong_gu_you_lan/article/details/78195171)
+
+![拖拽填空题](http://upload-images.jianshu.io/upload_images/3270074-b05d74d189e9b8ff.gif?imageMogr2/auto-orient/strip)
 
 ## License
 
