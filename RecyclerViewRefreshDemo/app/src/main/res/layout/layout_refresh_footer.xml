@@ -23,7 +23,9 @@
         android:id="@+id/tv_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="----------我是有底线的----------"
+        android:padding="15dp"
+        android:text="---------- 我是有底线的 ----------"
+        android:textSize="16sp"
         android:visibility="gone" />
 
 </LinearLayout>

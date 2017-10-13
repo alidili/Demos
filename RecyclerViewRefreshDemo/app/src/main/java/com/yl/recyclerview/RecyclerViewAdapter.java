@@ -110,6 +110,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
+                    // 如果当前是footer的位置，那么该item占据2个单元格，正常情况下占据1个单元格
                     return getItemViewType(position) == TYPE_FOOTER ? gridManager.getSpanCount() : 1;
                 }
             });
