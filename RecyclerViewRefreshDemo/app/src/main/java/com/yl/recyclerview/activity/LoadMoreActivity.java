@@ -1,4 +1,4 @@
-package com.yl.recyclerview;
+package com.yl.recyclerview.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.yl.recyclerview.R;
+import com.yl.recyclerview.adapter.LoadMoreAdapter;
+import com.yl.recyclerview.listener.EndlessRecyclerOnScrollListener;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -19,29 +23,20 @@ import java.util.TimerTask;
 
 /**
  * RecyclerView下拉刷新、上拉加载更多
- * Created by yangle on 2017/10/12.
- * <p>
- * Website：http://www.yangle.tech
- * <p>
- * GitHub：https://github.com/alidili
- * <p>
- * CSDN：http://blog.csdn.net/kong_gu_you_lan
- * <p>
- * JianShu：http://www.jianshu.com/u/34ece31cd6eb
  */
 
-public class MainActivity extends AppCompatActivity {
+public class LoadMoreActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private LoadMoreAdapter loadMoreAdapter;
     private List<String> dataList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recyclerview);
 
         init();
     }
@@ -59,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         // 模拟获取数据
         getData();
-        recyclerViewAdapter = new RecyclerViewAdapter(this, dataList);
+        loadMoreAdapter = new LoadMoreAdapter(dataList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setAdapter(loadMoreAdapter);
 
         // 设置下拉刷新
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -70,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 // 刷新数据
                 dataList.clear();
                 getData();
-                recyclerViewAdapter.notifyDataSetChanged();
+                loadMoreAdapter.notifyDataSetChanged();
 
                 // 延时1s关闭下拉刷新
                 swipeRefreshLayout.postDelayed(new Runnable() {
@@ -88,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
             @Override
             public void onLoadMore() {
-                recyclerViewAdapter.setLoadState(recyclerViewAdapter.LOADING);
+                loadMoreAdapter.setLoadState(loadMoreAdapter.LOADING);
 
                 if (dataList.size() < 52) {
                     // 模拟获取网络数据，延时1s
@@ -99,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     getData();
-                                    recyclerViewAdapter.setLoadState(recyclerViewAdapter.LOADING_COMPLETE);
+                                    loadMoreAdapter.setLoadState(loadMoreAdapter.LOADING_COMPLETE);
                                 }
                             });
                         }
                     }, 1000);
                 } else {
                     // 显示加载到底的提示
-                    recyclerViewAdapter.setLoadState(recyclerViewAdapter.LOADING_END);
+                    loadMoreAdapter.setLoadState(loadMoreAdapter.LOADING_END);
                 }
             }
         });
@@ -140,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         }
         dataList.clear();
         getData();
-        recyclerViewAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(loadMoreAdapter);
         return super.onOptionsItemSelected(item);
     }
 }

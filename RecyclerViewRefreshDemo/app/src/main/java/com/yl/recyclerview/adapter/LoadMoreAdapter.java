@@ -1,4 +1,4 @@
-package com.yl.recyclerview;
+package com.yl.recyclerview.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,16 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.yl.recyclerview.R;
+
 import java.util.List;
 
 /**
- * 带上拉加载更多功能的Adapter
+ * 上拉加载更多
  * Created by yangle on 2017/10/12.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter {
+public class LoadMoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context context;
     private List<String> dataList;
 
     // 普通布局
@@ -34,8 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     // 加载到底
     public final int LOADING_END = 3;
 
-    public RecyclerViewAdapter(Context context, List<String> dataList) {
-        this.context = context;
+    public LoadMoreAdapter(List<String> dataList) {
         this.dataList = dataList;
     }
 
@@ -53,11 +53,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //进行判断显示类型，来创建返回不同的View
         if (viewType == TYPE_ITEM) {
-            View view = LayoutInflater.from(context).inflate(R.layout.adapter_recyclerview, parent, false);
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.adapter_recyclerview, parent, false);
             return new RecyclerViewHolder(view);
 
         } else if (viewType == TYPE_FOOTER) {
-            View view = LayoutInflater.from(context).inflate(R.layout.layout_refresh_footer, parent, false);
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.layout_refresh_footer, parent, false);
             return new FootViewHolder(view);
         }
         return null;
@@ -117,23 +119,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class RecyclerViewHolder extends RecyclerView.ViewHolder {
+    private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvItem;
 
-        public RecyclerViewHolder(View itemView) {
+        RecyclerViewHolder(View itemView) {
             super(itemView);
             tvItem = (TextView) itemView.findViewById(R.id.tv_item);
         }
     }
 
-    class FootViewHolder extends RecyclerView.ViewHolder {
+    private class FootViewHolder extends RecyclerView.ViewHolder {
 
         ProgressBar pbLoading;
         TextView tvLoading;
         TextView tvEnd;
 
-        public FootViewHolder(View itemView) {
+        FootViewHolder(View itemView) {
             super(itemView);
             pbLoading = (ProgressBar) itemView.findViewById(R.id.pb_loading);
             tvLoading = (TextView) itemView.findViewById(R.id.tv_loading);
