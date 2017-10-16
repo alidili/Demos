@@ -17,15 +17,15 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
         LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
-        // 当不滚动时
+        // 当不滑动时
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-            //获取最后一个完全显示的ItemPosition
-            int lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
+            //获取最后一个完全显示的itemPosition
+            int lastItemPosition = manager.findLastCompletelyVisibleItemPosition();
             int itemCount = manager.getItemCount();
 
-            // 判断是否滚动到底部，并且是向上滚动
-            if (lastVisibleItem == (itemCount - 1) && isSlidingUpward) {
-                //加载更多功能的代码
+            // 判断是否滑动到了最后一个item，并且是向上滑动
+            if (lastItemPosition == (itemCount - 1) && isSlidingUpward) {
+                //加载更多
                 onLoadMore();
             }
         }

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
