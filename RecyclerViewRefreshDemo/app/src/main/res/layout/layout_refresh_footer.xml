@@ -17,15 +17,45 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:text="正在加载..."
+        android:textColor="#4DB6AC"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tv_end"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_end"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="---------- 我是有底线的 ----------"
-        android:textSize="16sp"
-        android:visibility="gone" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="#4DB6AC"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="我是有底线的"
+            android:textColor="#4DB6AC"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="#4DB6AC"
+            android:gravity="end" />
+
+    </LinearLayout>
 
 </LinearLayout>

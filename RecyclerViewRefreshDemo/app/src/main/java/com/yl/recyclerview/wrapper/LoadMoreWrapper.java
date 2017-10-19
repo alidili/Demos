@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -66,19 +67,19 @@ public class LoadMoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 case LOADING: // 正在加载
                     footViewHolder.pbLoading.setVisibility(View.VISIBLE);
                     footViewHolder.tvLoading.setVisibility(View.VISIBLE);
-                    footViewHolder.tvEnd.setVisibility(View.GONE);
+                    footViewHolder.llEnd.setVisibility(View.GONE);
                     break;
 
                 case LOADING_COMPLETE: // 加载完成
                     footViewHolder.pbLoading.setVisibility(View.INVISIBLE);
                     footViewHolder.tvLoading.setVisibility(View.INVISIBLE);
-                    footViewHolder.tvEnd.setVisibility(View.GONE);
+                    footViewHolder.llEnd.setVisibility(View.GONE);
                     break;
 
                 case LOADING_END: // 加载到底
                     footViewHolder.pbLoading.setVisibility(View.GONE);
                     footViewHolder.tvLoading.setVisibility(View.GONE);
-                    footViewHolder.tvEnd.setVisibility(View.VISIBLE);
+                    footViewHolder.llEnd.setVisibility(View.VISIBLE);
                     break;
 
                 default:
@@ -114,13 +115,13 @@ public class LoadMoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         ProgressBar pbLoading;
         TextView tvLoading;
-        TextView tvEnd;
+        LinearLayout llEnd;
 
         FootViewHolder(View itemView) {
             super(itemView);
             pbLoading = (ProgressBar) itemView.findViewById(R.id.pb_loading);
             tvLoading = (TextView) itemView.findViewById(R.id.tv_loading);
-            tvEnd = (TextView) itemView.findViewById(R.id.tv_end);
+            llEnd = (LinearLayout) itemView.findViewById(R.id.ll_end);
         }
     }
 
