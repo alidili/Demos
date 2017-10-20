@@ -39,9 +39,8 @@
             android:gravity="start" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
             android:gravity="center"
             android:padding="15dp"
             android:text="我是有底线的"

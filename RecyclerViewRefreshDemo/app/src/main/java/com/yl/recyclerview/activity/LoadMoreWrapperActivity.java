@@ -33,6 +33,7 @@ public class LoadMoreWrapperActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
+    private LoadMoreWrapperAdapter loadMoreWrapperAdapter;
     private LoadMoreWrapper loadMoreWrapper;
     private List<String> dataList = new ArrayList<>();
 
@@ -57,7 +58,7 @@ public class LoadMoreWrapperActivity extends AppCompatActivity {
 
         // 模拟获取数据
         getData();
-        LoadMoreWrapperAdapter loadMoreWrapperAdapter = new LoadMoreWrapperAdapter(dataList);
+        loadMoreWrapperAdapter = new LoadMoreWrapperAdapter(dataList);
         loadMoreWrapper = new LoadMoreWrapper(loadMoreWrapperAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(loadMoreWrapper);
@@ -69,7 +70,7 @@ public class LoadMoreWrapperActivity extends AppCompatActivity {
                 // 刷新数据
                 dataList.clear();
                 getData();
-                loadMoreWrapper.notifyDataSetChanged();
+                loadMoreWrapperAdapter.notifyDataSetChanged();
 
                 // 延时1s关闭下拉刷新
                 swipeRefreshLayout.postDelayed(new Runnable() {
