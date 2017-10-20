@@ -64,6 +64,14 @@
 
 ![拖拽填空题](http://upload-images.jianshu.io/upload_images/3270074-b05d74d189e9b8ff.gif?imageMogr2/auto-orient/strip)
 
+## RecyclerViewRefreshDemo
+
+[![](https://img.shields.io/badge/APK%20download-2.36M-green.svg)](https://github.com/alidili/Demos/raw/master/RecyclerViewRefreshDemo/RecyclerViewRefreshDemo.apk)
+
+[《Android RecyclerView下拉刷新 & 上拉加载更多》](http://blog.csdn.net/kong_gu_you_lan/article/details/78294330)
+
+![上拉加载更多](http://upload-images.jianshu.io/upload_images/3270074-dbf32d05e92c5a3a.gif?imageMogr2/auto-orient/strip)
+
 ## License
 
 ```
