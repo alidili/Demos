@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
 
-    //用来标记是否正在向上滑动
+    // 用来标记是否正在向上滑动
     private boolean isSlidingUpward = false;
 
     @Override
@@ -19,13 +19,13 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
         LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
         // 当不滑动时
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-            //获取最后一个完全显示的itemPosition
+            // 获取最后一个完全显示的itemPosition
             int lastItemPosition = manager.findLastCompletelyVisibleItemPosition();
             int itemCount = manager.getItemCount();
 
             // 判断是否滑动到了最后一个item，并且是向上滑动
             if (lastItemPosition == (itemCount - 1) && isSlidingUpward) {
-                //加载更多
+                // 加载更多
                 onLoadMore();
             }
         }
