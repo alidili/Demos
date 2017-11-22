@@ -236,21 +236,29 @@ public class DragFillBlankView extends RelativeLayout implements View.OnDragList
                 for (int i = 0; i < answerRangeList.size(); i++) {
                     AnswerRange range = answerRangeList.get(i);
 
-                    // 获取TextView中字符坐标
-                    Rect bound = new Rect();
-                    int line = layout.getLineForOffset(range.start);
-                    layout.getLineBounds(line, bound);
+                    // 获取TextView中第一个字符的坐标
+                    Rect startBound = new Rect();
+                    layout.getLineBounds(layout.getLineForOffset(range.start), startBound);
+
+                    // 获取TextView中最后一个字符的坐标
+                    Rect endBound = new Rect();
+                    layout.getLineBounds(layout.getLineForOffset(range.end), endBound);
 
                     // 字符顶部y坐标
-                    int yAxisTop = bound.top - dp2px(10);
+                    int yAxisTop = startBound.top - dp2px(5);
                     // 字符底部y坐标
-                    int yAxisBottom = bound.bottom + dp2px(5);
+                    int yAxisBottom = endBound.bottom + dp2px(5);
                     // 字符左边x坐标
-                    float xAxisLeft = layout.getPrimaryHorizontal(range.start) - dp2px(10);
+                    float xAxisLeft = layout.getPrimaryHorizontal(range.start) - dp2px(5);
                     // 字符右边x坐标
-                    float xAxisRight = layout.getSecondaryHorizontal(range.end) + dp2px(10);
+                    float xAxisRight = layout.getSecondaryHorizontal(range.end) + dp2px(5);
 
-                    if (xAxisRight > xAxisLeft) { // 填空在一行
+                    // 一行的文本高度
+                    int lineHeight = startBound.bottom - startBound.top;
+                    // 当前的文本高度
+                    int currentLineHeight = endBound.bottom - startBound.top;
+
+                    if (currentLineHeight <= lineHeight) { // 填空在一行
                         if (currentX > xAxisLeft && currentX < xAxisRight &&
                                 currentY < yAxisBottom && currentY > yAxisTop) {
                             position = i;
