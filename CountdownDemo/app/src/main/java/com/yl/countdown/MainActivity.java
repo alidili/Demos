@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CountdownView countdownView;
     private Button btnStart;
-    private int time = 30;
+    private int time = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
