@@ -1,6 +1,6 @@
 # Demo合集
 
-## 1.MPAndroidChart折线图 [MPAndroidChartDemo](https://github.com/alidili/Demos/tree/master/MPAndroidChartDemo)
+## 1. MPAndroidChart折线图 [源码](https://github.com/alidili/Demos/tree/master/MPAndroidChartDemo)
 
 [![](https://img.shields.io/badge/APK%20download-1.79M-green.svg)](https://github.com/alidili/Demos/raw/master/MPAndroidChartDemo/MPAndroidChartDemo.apk)
 
@@ -8,7 +8,7 @@
 
 ![折线图](http://upload-images.jianshu.io/upload_images/3270074-3927ef98caa3508b.gif?imageMogr2/auto-orient/strip)
 
-## 2.Retrofit + RxJava使用详解 [RetrofitDemo](https://github.com/alidili/Demos/tree/master/RetrofitDemo)
+## 2. Retrofit + RxJava使用详解 [源码](https://github.com/alidili/Demos/tree/master/RetrofitDemo)
 
 [![](https://img.shields.io/badge/APK%20download-1.93M-green.svg)](https://github.com/alidili/Demos/raw/master/RetrofitDemo/RetrofitDemo.apk)
 
@@ -16,19 +16,19 @@
 
 [《Android 探讨一下Retrofit封装的最佳姿势》](http://blog.csdn.net/kong_gu_you_lan/article/details/73733922)
 
-## 3.谈谈我所理解的MVP [MVPDemo](https://github.com/alidili/Demos/tree/master/MVPDemo)
+## 3. 谈谈我所理解的MVP [源码](https://github.com/alidili/Demos/tree/master/MVPDemo)
 
 [![](https://img.shields.io/badge/APK%20download-2.35M-green.svg)](https://github.com/alidili/Demos/raw/master/MVPDemo/MVPDemo.apk)
 
 [《Android 谈谈我所理解的MVP》](http://blog.csdn.net/kong_gu_you_lan/article/details/73848719)
 
-## 4.使用RxLifecycle解决RxJava内存泄漏 [RxLifecycleDemo](https://github.com/alidili/Demos/tree/master/RxLifecycleDemo)
+## 4. 使用RxLifecycle解决RxJava内存泄漏 [源码](https://github.com/alidili/Demos/tree/master/RxLifecycleDemo)
 
 [![](https://img.shields.io/badge/APK%20download-2.09M-green.svg)](https://github.com/alidili/Demos/raw/master/RxLifecycleDemo/RxLifecycleDemo.apk)
 
 [《Android 使用RxLifecycle解决RxJava内存泄漏》](http://blog.csdn.net/kong_gu_you_lan/article/details/74469041)
 
-## 5.DataBinding使用详解 [DataBindingDemo](https://github.com/alidili/Demos/tree/master/DataBindingDemo)
+## 5. DataBinding使用详解 [源码](https://github.com/alidili/Demos/tree/master/DataBindingDemo)
 
 [![](https://img.shields.io/badge/APK%20download-1.83M-green.svg)](https://github.com/alidili/Demos/raw/master/DataBindingDemo/DataBindingDemo.apk)
 
@@ -36,19 +36,19 @@
 
 [《Android DataBinding使用详解（二）》](http://blog.csdn.net/kong_gu_you_lan/article/details/76020050)
 
-## 6.DataBinding & MVVM [MVVMDemo](https://github.com/alidili/Demos/tree/master/MVVMDemo)
+## 6. DataBinding & MVVM [源码](https://github.com/alidili/Demos/tree/master/MVVMDemo)
 
 [![](https://img.shields.io/badge/APK%20download-2.46M-green.svg)](https://github.com/alidili/Demos/raw/master/MVVMDemo/MVVMDemo.apk)
 
 [《Android DataBinding & MVVM》](http://blog.csdn.net/kong_gu_you_lan/article/details/76906630)
 
-## 7.自动化测试工具UiAutomator使用详解 [UiAutomatorDemo](https://github.com/alidili/Demos/tree/master/UiAutomatorDemo)
+## 7. 自动化测试工具UiAutomator使用详解 [源码](https://github.com/alidili/Demos/tree/master/UiAutomatorDemo)
 
 [《Android自动化测试工具 UiAutomator使用详解》](http://blog.csdn.net/kong_gu_you_lan/article/details/77197944)
 
 ![打开关于手机](http://upload-images.jianshu.io/upload_images/3270074-0cf4967c2f2c4033.gif?imageMogr2/auto-orient/strip)
 
-## 8.使用代码实现一个填空题 [FillBlankQuestionDemo](https://github.com/alidili/Demos/tree/master/FillBlankQuestionDemo)
+## 8. 使用代码实现一个填空题 [源码](https://github.com/alidili/Demos/tree/master/FillBlankQuestionDemo)
 
 [![](https://img.shields.io/badge/APK%20download-1.48M-green.svg)](https://github.com/alidili/Demos/raw/master/FillBlankQuestionDemo/FillBlankQuestionDemo.apk)
 
@@ -56,7 +56,7 @@
 
 ![填空题](http://upload-images.jianshu.io/upload_images/3270074-8bb46edbb4244870.gif?imageMogr2/auto-orient/strip)
 
-## 9.使用代码实现一个选词（拖拽）填空题 [DragFillBlankQuestionDemo](https://github.com/alidili/Demos/tree/master/DragFillBlankQuestionDemo)
+## 9. 使用代码实现一个选词（拖拽）填空题 [源码](https://github.com/alidili/Demos/tree/master/DragFillBlankQuestionDemo)
 
 [![](https://img.shields.io/badge/APK%20download-1.49M-green.svg)](https://github.com/alidili/Demos/raw/master/DragFillBlankQuestionDemo/DragFillBlankQuestionDemo.apk)
 
@@ -64,7 +64,7 @@
 
 ![拖拽填空题](http://upload-images.jianshu.io/upload_images/3270074-b05d74d189e9b8ff.gif?imageMogr2/auto-orient/strip)
 
-## 10.RecyclerView下拉刷新 & 上拉加载更多 [RecyclerViewRefreshDemo](https://github.com/alidili/Demos/tree/master/RecyclerViewRefreshDemo)
+## 10. RecyclerView下拉刷新 & 上拉加载更多 [源码](https://github.com/alidili/Demos/tree/master/RecyclerViewRefreshDemo)
 
 [![](https://img.shields.io/badge/APK%20download-2.36M-green.svg)](https://github.com/alidili/Demos/raw/master/RecyclerViewRefreshDemo/RecyclerViewRefreshDemo.apk)
 
@@ -72,7 +72,7 @@
 
 ![上拉加载更多](http://upload-images.jianshu.io/upload_images/3270074-dbf32d05e92c5a3a.gif?imageMogr2/auto-orient/strip)
 
-## 11.自定义Switch开关按钮的样式 [SwitchViewDemo](https://github.com/alidili/Demos/tree/master/SwitchViewDemo)
+## 11. 自定义Switch开关按钮的样式 [源码](https://github.com/alidili/Demos/tree/master/SwitchViewDemo)
 
 [![](https://img.shields.io/badge/APK%20download-1.57M-green.svg)](https://github.com/alidili/Demos/raw/master/SwitchViewDemo/SwitchViewDemo.apk)
 
