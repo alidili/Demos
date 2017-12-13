@@ -31,6 +31,8 @@ public class CountdownView extends View {
     private float hourScaleHeight = dp2px(6);
     // 分钟刻度高
     private float minuteScaleHeight = dp2px(4);
+    // 定时进度条宽
+    private float arcWidth = dp2px(6);
     // 时间-分
     private int time = 0;
     // 刻度盘画笔
@@ -89,7 +91,7 @@ public class CountdownView extends View {
         super.onDraw(canvas);
         // 绘制刻度盘
         drawDial(canvas);
-        // 绘制圆弧
+        // 绘制定时进度条
         drawArc(canvas);
         // 绘制时间
         drawTime(canvas);
@@ -111,24 +113,30 @@ public class CountdownView extends View {
 
         // 绘制小时刻度
         for (int i = 0; i < 12; i++) {
-            if (i >= time / 5 + 1) {
+            // 定时时间为0时正常绘制小时刻度
+            // 小时刻度没有被定时进度条覆盖时正常绘制小时刻度
+            if (time == 0 || i > time / 5) {
                 canvas.drawLine(0, -dialRadius, 0, -dialRadius + hourScaleHeight, dialPaint);
             }
+            // 360 / 12 = 30;
             canvas.rotate(30);
         }
 
         // 绘制分钟刻度
         dialPaint.setStrokeWidth(dp2px(1));
         for (int i = 0; i < 60; i++) {
-            if (i >= time) {
+            // 小时刻度位置不绘制分钟刻度
+            // 分钟刻度没有被定时进度条覆盖时正常绘制分钟刻度
+            if (i % 5 != 0 && i > time) {
                 canvas.drawLine(0, -dialRadius, 0, -dialRadius + minuteScaleHeight, dialPaint);
             }
+            // 360 / 60 = 6;
             canvas.rotate(6);
         }
     }
 
     /**
-     * 绘制圆弧
+     * 绘制定时进度条
      *
      * @param canvas 画布
      */
@@ -141,10 +149,10 @@ public class CountdownView extends View {
             // 取消直线圆角设置
             dialPaint.setStrokeCap(Paint.Cap.BUTT);
 
-            // 绘制圆弧
-            float arcWidth = dp2px(6);
+            // 绘制进度
             for (int i = 0; i <= time * 6; i++) {
                 canvas.drawLine(0, -dialRadius - arcWidth / 2, 0, -dialRadius + arcWidth / 2, dialPaint);
+                // 最后一次绘制后不旋转画布
                 if (i != time * 6) {
                     canvas.rotate(1);
                 }
@@ -183,9 +191,9 @@ public class CountdownView extends View {
                 // 标记正在移动
                 isMove = true;
                 // 移动的角度
-                float angle = calcAngle(event.getX(), event.getY());
+                float moveAngle = calcAngle(event.getX(), event.getY());
                 // 滑过的角度偏移量
-                float angleOffset = angle - currentAngle;
+                float angleOffset = moveAngle - currentAngle;
 
                 // 防止越界
                 if (angleOffset < -270) {
@@ -194,7 +202,7 @@ public class CountdownView extends View {
                     angleOffset = angleOffset - 360;
                 }
 
-                currentAngle = angle;
+                currentAngle = moveAngle;
                 // 计算时间
                 calcTime(angleOffset);
                 break;
@@ -220,34 +228,45 @@ public class CountdownView extends View {
      * @return (targetX, targetY)坐标与x轴的夹角
      */
     private float calcAngle(float targetX, float targetY) {
+        // 以刻度盘圆心为坐标圆点
         float x = targetX - width / 2;
         float y = targetY - height / 2;
+        // 滑过的弧度
         double radian;
 
         if (x != 0) {
             float tan = Math.abs(y / x);
             if (x > 0) {
                 if (y >= 0) {
+                    // 第四象限
                     radian = Math.atan(tan);
                 } else {
+                    // 第一象限
                     radian = 2 * Math.PI - Math.atan(tan);
                 }
             } else {
                 if (y >= 0) {
+                    // 第三象限
                     radian = Math.PI - Math.atan(tan);
                 } else {
+                    // 第二象限
                     radian = Math.PI + Math.atan(tan);
                 }
             }
         } else {
             if (y > 0) {
+                // Y轴向下方向
                 radian = Math.PI / 2;
             } else {
-                radian = -Math.PI / 2;
+                // Y轴向上方向
+                radian = Math.PI + Math.PI / 2;
             }
         }
 
-        return (float) ((radian * 180) / Math.PI);
+        // 完整圆的弧度为2π，角度为360度，所以180度等于π弧度
+        // 弧度 = 角度 / 180 * π
+        // 角度 = 弧度 / π * 180
+        return (float) (radian / 180 * Math.PI);
     }
 
     /**
