@@ -80,6 +80,14 @@
 
 ![自定义样式](http://upload-images.jianshu.io/upload_images/3270074-26b2159e1c44d100.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+## 12. 自定义倒计时控件 [源码](https://github.com/alidili/Demos/tree/master/CountdownDemo)
+
+[![](https://img.shields.io/badge/APK%20download-1.56M-green.svg)](https://github.com/alidili/Demos/raw/master/CountdownDemo/CountdownDemo.apk)
+
+[《Android自定义控件 倒计时》](http://blog.csdn.net/kong_gu_you_lan/article/details/78794034)
+
+![倒计时](http://upload-images.jianshu.io/upload_images/3270074-5abfa07975a40e02.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## License
 
 ```
