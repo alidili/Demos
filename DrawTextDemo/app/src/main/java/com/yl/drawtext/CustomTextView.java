@@ -79,10 +79,10 @@ public class CustomTextView extends View {
         /*paint.setTextSize(sp2px(50));
         paint.setColor(Color.GRAY);
         // 文字宽
-        float textWidth = paint.measureText("YangLe'Blog");
-        // 文字高
-        float textHeight = Math.abs(fontMetrics.ascent + fontMetrics.descent);
-        canvas.drawText("YangLe'Blog", -textWidth / 2, textHeight / 2, paint);*/
+        float textWidth = paint.measureText("YangLe");
+        // 文字baseline在y轴方向的位置
+        float baseLineY = Math.abs(paint.ascent() + paint.descent()) / 2;
+        canvas.drawText("YangLe", -textWidth / 2, baseLineY, paint);*/
     }
 
     /**
