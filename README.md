@@ -92,7 +92,7 @@
 
 [![](https://img.shields.io/badge/APK%20download-1.56M-green.svg)](https://github.com/alidili/Demos/raw/master/DrawTextDemo/DrawTextDemo.apk)
 
-[《Android 图解Canvas drawText文字居中的那些事》](http://blog.csdn.net/kong_gu_you_lan/article/details/78921533)
+[《Android 图解Canvas drawText文字居中的那些事》](http://blog.csdn.net/kong_gu_you_lan/article/details/78927930)
 
 ![关键坐标](http://upload-images.jianshu.io/upload_images/3270074-e313fa9a629a5c6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
