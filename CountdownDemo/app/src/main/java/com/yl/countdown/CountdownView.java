@@ -266,7 +266,7 @@ public class CountdownView extends View {
         // 完整圆的弧度为2π，角度为360度，所以180度等于π弧度
         // 弧度 = 角度 / 180 * π
         // 角度 = 弧度 / π * 180
-        return (float) (radian / 180 * Math.PI);
+        return (float) (radian / Math.PI * 180);
     }
 
     /**
