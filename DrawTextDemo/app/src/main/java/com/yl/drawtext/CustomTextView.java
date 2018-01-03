@@ -57,13 +57,13 @@ public class CustomTextView extends View {
         // 绘制坐标
         drawCoordinate(canvas);
 
-        // 绘制居中文字
+        // 绘制居中文本
         //drawCenterText(canvas);
 
-        // 绘制多行居中文字（方式1）
+        // 绘制多行居中文本（方式1）
         //drawCenterMultiText1(canvas);
 
-        // 绘制多行居中文字（方式2）
+        // 绘制多行居中文本（方式2）
         //drawCenterMultiText2(canvas);
     }
 
@@ -73,7 +73,7 @@ public class CustomTextView extends View {
      * @param canvas 画布
      */
     private void drawCoordinate(Canvas canvas) {
-        // 绘制文字
+        // 绘制文本
         canvas.drawText("YangLe", 0, 0, paint);
 
         // top-红
@@ -99,20 +99,20 @@ public class CustomTextView extends View {
     }
 
     /**
-     * 绘制居中文字
+     * 绘制居中文本
      *
      * @param canvas 画布
      */
     private void drawCenterText(Canvas canvas) {
-        // 文字宽
+        // 文本宽
         float textWidth = paint.measureText("YangLe");
-        // 文字baseline在y轴方向的位置
+        // 文本baseline在y轴方向的位置
         float baseLineY = Math.abs(paint.ascent() + paint.descent()) / 2;
         canvas.drawText("YangLe", -textWidth / 2, baseLineY, paint);
     }
 
     /**
-     * 绘制多行居中文字（方式1）
+     * 绘制多行居中文本（方式1）
      *
      * @param canvas 画布
      */
@@ -128,45 +128,58 @@ public class CustomTextView extends View {
         StaticLayout staticLayout = new StaticLayout(text, textPaint, dp2px(50),
                 Layout.Alignment.ALIGN_CENTER, 1, 0, false);
         canvas.save();
+        // StaticLayout默认从（0，0）点开始绘制
+        // 如果需要调整位置，只能在绘制之前移动Canvas的起始坐标
         canvas.translate(-staticLayout.getWidth() / 2, -staticLayout.getHeight() / 2);
         staticLayout.draw(canvas);
         canvas.restore();
     }
 
     /**
-     * 绘制多行居中文字（方式2）
+     * 绘制多行居中文本（方式2）
      *
      * @param canvas 画布
      */
     private void drawCenterMultiText2(Canvas canvas) {
         String[] texts = {"A", "B", "C"};
+
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        // top绝对值
         float top = Math.abs(fontMetrics.top);
+        // ascent绝对值
         float ascent = Math.abs(fontMetrics.ascent);
+        // descent，正值
         float descent = fontMetrics.descent;
+        // bottom，正值
         float bottom = fontMetrics.bottom;
         // 行数
         int textLines = texts.length;
-        // 文字高度
+        // 文本高度
         float textHeight = top + bottom;
-        // 文字总高度
+        // 文本总高度
         float textTotalHeight = textHeight * textLines;
         // 基数
         float basePosition = (textLines - 1) / 2f;
 
         for (int i = 0; i < textLines; i++) {
-            // 文字宽度
+            // 文本宽度
             float textWidth = paint.measureText(texts[i]);
-            // 文字baseline在y轴方向的位置
+            // 文本baseline在y轴方向的位置
             float baselineY;
 
-            if (i < basePosition) { // 上
+            if (i < basePosition) {
+                // x轴上，值为负
+                // 总高度的/2 - 已绘制的文本高度 - 文本的top值（绝对值）
                 baselineY = -(textTotalHeight / 2 - textHeight * i - top);
 
-            } else if (i > basePosition) { // 下
+            } else if (i > basePosition) {
+                // x轴下，值为正
+                // 总高度的/2 - 未绘制的文本高度 - 文本的bottom值（绝对值）
                 baselineY = textTotalHeight / 2 - textHeight * (textLines - i - 1) - bottom;
 
-            } else { // 中
+            } else {
+                // x轴中，值为正
+                // 计算公式请参考单行文本居中公式
                 baselineY = (ascent - descent) / 2;
             }
 
