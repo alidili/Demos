@@ -96,6 +96,10 @@
 
 ![关键坐标](http://upload-images.jianshu.io/upload_images/3270074-e313fa9a629a5c6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+## 14. 使用ndk-build构建工具进行NDK开发 [源码](https://github.com/alidili/Demos/tree/master/NDKDemo)
+
+[![](https://img.shields.io/badge/APK%20download-1.58M-green.svg)](https://github.com/alidili/Demos/raw/master/NDKDemo/NDKDemo.apk)
+
 ## License
 
 ```
