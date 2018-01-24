@@ -100,6 +100,8 @@
 
 [![](https://img.shields.io/badge/APK%20download-1.58M-green.svg)](https://github.com/alidili/Demos/raw/master/NDKDemo/NDKDemo.apk)
 
+[《Android NDK开发（二） 使用ndk-build构建工具进行NDK开发》](http://blog.csdn.net/kong_gu_you_lan/article/details/79146817)
+
 ## License
 
 ```
