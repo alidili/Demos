@@ -65,6 +65,10 @@ public class CustomTextView extends View {
 
         // 绘制多行居中文本（方式2）
         //drawCenterMultiText2(canvas);
+
+        // 绘制多行居中文本（方式3）
+        // 最佳方式
+        //drawCenterMultiText3(canvas);
     }
 
     /**
@@ -144,18 +148,72 @@ public class CustomTextView extends View {
         String[] texts = {"A", "B", "C"};
 
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
-
-        // 文本高度
-        float textHeight = fontMetrics.bottom - fontMetrics.top;
+        // top绝对值
+        float top = Math.abs(fontMetrics.top);
+        // ascent绝对值
+        float ascent = Math.abs(fontMetrics.ascent);
+        // descent，正值
+        float descent = fontMetrics.descent;
+        // bottom，正值
+        float bottom = fontMetrics.bottom;
         // 行数
         int textLines = texts.length;
-        // 中间一行文本的 base line
-        float centerBaseY = -(fontMetrics.ascent + fontMetrics.descent) / 2;
-        for (int i = 0; i < textLines; ++ i) {
+        // 文本高度
+        float textHeight = top + bottom;
+        // 文本总高度
+        float textTotalHeight = textHeight * textLines;
+        // 基数
+        float basePosition = (textLines - 1) / 2f;
+
+        for (int i = 0; i < textLines; i++) {
+            // 文本宽度
             float textWidth = paint.measureText(texts[i]);
-            // 第 i 行文字的 base line = 中间一行的 base line + 偏移
-            // 而偏移等于行号的偏移 * textHeight，行号偏移等于 i 减去中间一行的行号，即减去 (textLines - 1) / 2
-            float baseY = centerBaseY + (i - (textLines - 1) / 2.0f) * textHeight;
+            // 文本baseline在y轴方向的位置
+            float baselineY;
+
+            if (i < basePosition) {
+                // x轴上，值为负
+                // 总高度的/2 - 已绘制的文本高度 - 文本的top值（绝对值）
+                baselineY = -(textTotalHeight / 2 - textHeight * i - top);
+
+            } else if (i > basePosition) {
+                // x轴下，值为正
+                // 总高度的/2 - 未绘制的文本高度 - 文本的bottom值（绝对值）
+                baselineY = textTotalHeight / 2 - textHeight * (textLines - i - 1) - bottom;
+
+            } else {
+                // x轴中，值为正
+                // 计算公式请参考单行文本居中公式
+                baselineY = (ascent - descent) / 2;
+            }
+
+            canvas.drawText(texts[i], -textWidth / 2, baselineY, paint);
+        }
+    }
+
+    /**
+     * 绘制多行居中文本（方式3）
+     * 最佳方式
+     *
+     * @param canvas 画布
+     */
+    private void drawCenterMultiText3(Canvas canvas) {
+        String[] texts = {"A", "B", "C"};
+
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        // 行数
+        int textLines = texts.length;
+        // 文本高度
+        float textHeight = fontMetrics.bottom - fontMetrics.top;
+        // 中间文本的baseline
+        float centerBaselineY = Math.abs(paint.ascent() + paint.descent()) / 2;
+
+        for (int i = 0; i < textLines; i++) {
+            float textWidth = paint.measureText(texts[i]);
+            // 第 i 行文本的 baseline = 中间文本的 baseline + 偏移
+            // 偏移等于行号的偏移 * textHeight
+            // 行号偏移等于 i 减去中间文本的行号，即减去 (textLines - 1) / 2
+            float baseY = centerBaselineY + (i - (textLines - 1) / 2.0f) * textHeight;
             canvas.drawText(texts[i], -textWidth / 2, baseY, paint);
         }
     }
