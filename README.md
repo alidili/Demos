@@ -102,6 +102,12 @@
 
 [《Android NDK开发（二） 使用ndk-build构建工具进行NDK开发》](http://blog.csdn.net/kong_gu_you_lan/article/details/79146817)
 
+## 15. 将编译好的so库提供给第三方使用 [源码](https://github.com/alidili/Demos/tree/master/NDKLibraryDemo)
+
+[![](https://img.shields.io/badge/APK%20download-1.99M-green.svg)](https://github.com/alidili/Demos/raw/master/NDKLibraryDemo/NDKLibraryDemo.apk)
+
+[《Android NDK开发（五） 开发中遇到的问题汇总》]()
+
 ## License
 
 ```
