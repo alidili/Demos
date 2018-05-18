@@ -106,7 +106,7 @@
 
 [![](https://img.shields.io/badge/APK%20download-1.99M-green.svg)](https://github.com/alidili/Demos/raw/master/NDKLibraryDemo/NDKLibraryDemo.apk)
 
-[《Android NDK开发（五） 开发中遇到的问题汇总》]()
+[《Android NDK开发（五） 开发中遇到的问题汇总》](https://blog.csdn.net/kong_gu_you_lan/article/details/80359547)
 
 ## License
 
