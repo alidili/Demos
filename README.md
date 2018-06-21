@@ -108,6 +108,22 @@
 
 [《Android NDK开发（五） 开发中遇到的问题汇总》](https://blog.csdn.net/kong_gu_you_lan/article/details/80359547)
 
+## 16. Design Support Library使用详解 [源码](https://github.com/alidili/DesignSupportDemo)
+
+[![](https://img.shields.io/badge/APK%20download-2.32M-green.svg)](https://github.com/alidili/DesignSupportDemo/raw/master/DesignSupportDemo.apk)
+
+[《Snackbar提示框》](http://blog.csdn.net/kong_gu_you_lan/article/details/51944248)
+
+[《TabLayout选项卡》](http://blog.csdn.net/kong_gu_you_lan/article/details/51954327)
+
+[《EditText辅助控件——TextInputLayout》](http://blog.csdn.net/kong_gu_you_lan/article/details/52057050)
+
+[《FrameLayout布局的增强版—CoordinatorLayout》](http://blog.csdn.net/kong_gu_you_lan/article/details/51956496)
+
+[《可折叠的Toolbar——CollapsingToolbarLayout》](http://blog.csdn.net/kong_gu_you_lan/article/details/51958313)
+
+[《Android Design Support Library v28 新增组件详解》](https://blog.csdn.net/kong_gu_you_lan/article/details/80755159)
+
 ## License
 
 ```
