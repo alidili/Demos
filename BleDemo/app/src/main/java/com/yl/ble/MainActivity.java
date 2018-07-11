@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 绑定服务
         Intent intent = new Intent(this, BleService.class);
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+        startService(intent);
 
         // 注册蓝牙信息广播接收器
         IntentFilter filter = new IntentFilter();
@@ -204,6 +205,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_scan: // 搜索蓝牙
                 // 搜索蓝牙设备
                 scanBleDevice();
+                // 初始化数据
+                initData();
+                // 注册蓝牙信息接收器
+                registerBleReceiver();
                 break;
 
             default:
@@ -235,7 +240,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mBleReceiver = null;
         }
         unbindService(mServiceConnection);
-        mBleService.stopSelf();
         mBleService = null;
     }
 }

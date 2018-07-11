@@ -8,15 +8,11 @@ import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.widget.TextView;
 
 import java.util.UUID;
 
@@ -108,16 +104,7 @@ public class BleService extends Service {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             // 发现GATT服务
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                setBluetoothGatt();
-            }
-        }
-
-        @Override
-        public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic,
-                                         int status) {
-            // 收到数据
-            if (status == BluetoothGatt.GATT_SUCCESS) {
-                sendBleBroadcast(ACTION_DATA_AVAILABLE, characteristic);
+                setBleNotification();
             }
         }
 
@@ -195,29 +182,33 @@ public class BleService extends Service {
     }
 
     /**
-     * 设置Gatt
+     * 设置蓝牙设备在数据改变时，通知App
      */
-    public void setBluetoothGatt() {
+    public void setBleNotification() {
         if (mBluetoothGatt == null) {
             sendBleBroadcast(ACTION_CONNECTING_FAIL);
             return;
         }
 
+        // 获取蓝牙设备的服务
         BluetoothGattService gattService = mBluetoothGatt.getService(SERVICE_UUID);
         if (gattService == null) {
             sendBleBroadcast(ACTION_CONNECTING_FAIL);
             return;
         }
 
+        // 获取蓝牙设备的特征
         BluetoothGattCharacteristic gattCharacteristic = gattService.getCharacteristic(CHARACTERISTIC_READ_UUID);
         if (gattCharacteristic == null) {
             sendBleBroadcast(ACTION_CONNECTING_FAIL);
             return;
         }
 
+        // 获取蓝牙设备特征的描述符
         BluetoothGattDescriptor descriptor = gattCharacteristic.getDescriptor(DESCRIPTOR_UUID);
         descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
         if (mBluetoothGatt.writeDescriptor(descriptor)) {
+            // 蓝牙设备在数据改变时，通知App，App在收到数据后回调onCharacteristicChanged方法
             mBluetoothGatt.setCharacteristicNotification(gattCharacteristic, true);
         }
     }
@@ -229,6 +220,7 @@ public class BleService extends Service {
      * @return true：发送成功 false：发送失败
      */
     public boolean sendData(byte[] data) {
+        // 获取蓝牙设备的服务
         BluetoothGattService gattService = null;
         if (mBluetoothGatt != null) {
             gattService = mBluetoothGatt.getService(SERVICE_UUID);
@@ -236,10 +228,14 @@ public class BleService extends Service {
         if (gattService == null) {
             return false;
         }
+
+        // 获取蓝牙设备的特征
         BluetoothGattCharacteristic gattCharacteristic = gattService.getCharacteristic(CHARACTERISTIC_WRITE_UUID);
         if (gattCharacteristic == null) {
             return false;
         }
+
+        // 发送数据
         gattCharacteristic.setValue(data);
         return mBluetoothGatt.writeCharacteristic(gattCharacteristic);
     }
