@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.didi.virtualapk.plugin'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.yl.plugin"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../../keystore/test.keystore")
+            storePassword "test123456"
+            keyAlias "test"
+            keyPassword "test123456"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+virtualApk {
+    // 插件资源表中的packageId，需要确保不同插件有不同的packageId.
+    packageId = 0x6f
+
+    // 宿主工程application模块的路径，插件的构建需要依赖这个路径
+    targetHost = '../VirtualAPKHostDemo/app'
+
+    // 默认为true，如果插件有引用宿主的类，那么这个选项可以使得插件和宿主保持混淆一致
+    applyHostMapping = true
+}
