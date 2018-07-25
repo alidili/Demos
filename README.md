@@ -130,6 +130,12 @@
 
 [《Android 蓝牙BLE开发详解》](https://blog.csdn.net/kong_gu_you_lan/article/details/81009800)
 
+## 18. 滴滴插件化方案VirtualApk [源码](https://github.com/alidili/Demos/tree/master/VirtualAPKDemo) 
+
+[![](https://img.shields.io/badge/Host%20APK%20download-1.26MB-green.svg)](https://github.com/alidili/Demos/raw/master/VirtualAPKDemo/host.apk)
+
+[![](https://img.shields.io/badge/Plugin%20APK%20download-5.25KB-blue.svg)](https://github.com/alidili/Demos/raw/master/VirtualAPKDemo/plugin.apk)
+
 ## License
 
 ```
