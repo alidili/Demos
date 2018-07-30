@@ -20,12 +20,14 @@ public class VirtualAPKHostApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        // 初始化VirtualAPK
         PluginManager.getInstance(base).init();
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        // 加载存储根目录的插件apk，实际项目中按需保存
         String pluginPath = Environment.getExternalStorageDirectory().getAbsolutePath().concat("/plugin.apk");
         File plugin = new File(pluginPath);
         if (plugin.exists()) {
