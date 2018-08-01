@@ -136,6 +136,8 @@
 
 [![](https://img.shields.io/badge/Plugin%20APK%20download-5.25KB-blue.svg)](https://github.com/alidili/Demos/raw/master/VirtualAPKDemo/plugin.apk)
 
+[《滴滴插件化方案 VirtualApk 完全解析（一） 初识基本用法》](https://blog.csdn.net/kong_gu_you_lan/article/details/81324117)
+
 ## License
 
 ```
