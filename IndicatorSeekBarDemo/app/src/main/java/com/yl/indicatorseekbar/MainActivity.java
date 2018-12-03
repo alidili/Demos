@@ -2,6 +2,7 @@ package com.yl.indicatorseekbar;
 
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -33,15 +34,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tvIndicator.getLayoutParams();
-
         indicatorSeekBar.setOnSeekBarChangeListener(new IndicatorSeekBar.OnIndicatorSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, int width, int thumbWidth,
-                                          float progressRatio) {
+            public void onProgressChanged(SeekBar seekBar, int progress, float indicatorOffset) {
                 String indicatorText = progress + "%";
                 tvIndicator.setText(indicatorText);
-                params.leftMargin = (int) (width * progressRatio - thumbWidth * progressRatio);
+                params.leftMargin = (int) indicatorOffset;
                 tvIndicator.setLayoutParams(params);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                tvIndicator.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                tvIndicator.setVisibility(View.INVISIBLE);
             }
         });
     }

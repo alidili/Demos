@@ -25,6 +25,10 @@ public class IndicatorSeekBar extends AppCompatSeekBar {
     private Paint mPaint;
     // 进度文字位置信息
     private Rect mProgressTextRect = new Rect();
+    // 滑块按钮宽度
+    private int mThumbWidth = dp2px(50);
+    // 进度指示器宽度
+    private int mIndicatorWidth = dp2px(50);
     // 进度监听
     private OnIndicatorSeekBarChangeListener mIndicatorSeekBarChangeListener;
 
@@ -46,6 +50,31 @@ public class IndicatorSeekBar extends AppCompatSeekBar {
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.parseColor("#00574B"));
         mPaint.setTextSize(sp2px(16));
+
+        // 如果不设置padding，当滑动到最左边或最右边时，滑块会显示不全
+        setPadding(mThumbWidth / 2, 0, mThumbWidth / 2, 0);
+
+        // 设置滑动监听
+        this.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // NO OP
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                if (mIndicatorSeekBarChangeListener != null) {
+                    mIndicatorSeekBarChangeListener.onStartTrackingTouch(seekBar);
+                }
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if (mIndicatorSeekBarChangeListener != null) {
+                    mIndicatorSeekBarChangeListener.onStopTrackingTouch(seekBar);
+                }
+            }
+        });
     }
 
     @Override
@@ -54,18 +83,17 @@ public class IndicatorSeekBar extends AppCompatSeekBar {
         String progressText = getProgress() + "%";
         mPaint.getTextBounds(progressText, 0, progressText.length(), mProgressTextRect);
 
-        int thumbWidth = dp2px(50);
         // 进度百分比
         float progressRatio = (float) getProgress() / getMax();
         // thumb偏移量
-        float thumbOffset = (thumbWidth - mProgressTextRect.width()) / 2 - thumbWidth * progressRatio;
+        float thumbOffset = (mThumbWidth - mProgressTextRect.width()) / 2 - mThumbWidth * progressRatio;
         float thumbX = getWidth() * progressRatio + thumbOffset;
         float thumbY = getHeight() / 2f + mProgressTextRect.height() / 2f;
         canvas.drawText(progressText, thumbX, thumbY, mPaint);
 
         if (mIndicatorSeekBarChangeListener != null) {
-            mIndicatorSeekBarChangeListener.onProgressChanged(this, getProgress(), getWidth(),
-                    thumbWidth, progressRatio);
+            float indicatorOffset = getWidth() * progressRatio - (mIndicatorWidth - mThumbWidth) / 2 - mThumbWidth * progressRatio;
+            mIndicatorSeekBarChangeListener.onProgressChanged(this, getProgress(), indicatorOffset);
         }
     }
 
@@ -85,14 +113,25 @@ public class IndicatorSeekBar extends AppCompatSeekBar {
         /**
          * 进度监听回调
          *
-         * @param seekBar       SeekBar
-         * @param progress      进度
-         * @param width         SeekBa宽度
-         * @param thumbWidth    thumb宽度
-         * @param progressRatio 百分比
+         * @param seekBar         SeekBar
+         * @param progress        进度
+         * @param indicatorOffset 指示器偏移量
          */
-        public void onProgressChanged(SeekBar seekBar, int progress, int width, int thumbWidth,
-                                      float progressRatio);
+        public void onProgressChanged(SeekBar seekBar, int progress, float indicatorOffset);
+
+        /**
+         * 开始拖动
+         *
+         * @param seekBar SeekBar
+         */
+        public void onStartTrackingTouch(SeekBar seekBar);
+
+        /**
+         * 停止拖动
+         *
+         * @param seekBar SeekBar
+         */
+        public void onStopTrackingTouch(SeekBar seekBar);
     }
 
     /**

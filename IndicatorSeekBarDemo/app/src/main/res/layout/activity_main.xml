@@ -18,7 +18,8 @@
             android:background="@drawable/bg_indicator"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="invisible" />
 
         <com.yl.indicatorseekbar.IndicatorSeekBar
             android:id="@+id/indicator_seek_bar"
@@ -28,8 +29,6 @@
             android:max="100"
             android:maxHeight="2dp"
             android:minHeight="2dp"
-            android:paddingStart="25dp"
-            android:paddingEnd="25dp"
             android:progress="50"
             android:progressDrawable="@drawable/seekbar_progress_drawable"
             android:thumb="@drawable/seekbar_thumb" />
