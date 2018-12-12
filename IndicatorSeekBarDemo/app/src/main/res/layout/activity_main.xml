@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:background="@null"
             android:max="100"
             android:maxHeight="2dp"
             android:minHeight="2dp"
