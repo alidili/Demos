@@ -138,6 +138,12 @@
 
 [《滴滴插件化方案 VirtualApk 完全解析（一） 初识基本用法》](https://blog.csdn.net/kong_gu_you_lan/article/details/81324117)
 
+## 19. 自定义带文字提示的SeekBar控件 [源码](https://github.com/alidili/Demos/tree/master/IndicatorSeekBarDemo)
+
+[![](https://img.shields.io/badge/APK%20download-2.09M-green.svg)](https://github.com/alidili/Demos/raw/master/IndicatorSeekBarDemo/IndicatorSeekBarDemo.apk)
+
+![IndicatorSeekBar](https://upload-images.jianshu.io/upload_images/3270074-181d7b17a90237d4.gif?imageMogr2/auto-orient/strip)
+
 ## License
 
 ```
