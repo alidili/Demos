@@ -4,6 +4,8 @@
 
 ![IndicatorSeekBar](https://upload-images.jianshu.io/upload_images/3270074-181d7b17a90237d4.gif?imageMogr2/auto-orient/strip)
 
+[《Android自定义控件 带文字提示的SeekBar》](https://blog.csdn.net/kong_gu_you_lan/article/details/85112468)
+
 ## License
 
 ```
