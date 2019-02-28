@@ -4,6 +4,8 @@
 
 [《Android RecyclerView下拉刷新 & 上拉加载更多》](http://blog.csdn.net/kong_gu_you_lan/article/details/78294330)
 
+[《Android开源项目 RecyclerViewHelper 上拉加载更多/头尾布局/拖拽排序/侧滑删除/侧滑选择/万能分割线》](https://www.jianshu.com/p/827769fc0290)
+
 ![上拉加载更多](http://upload-images.jianshu.io/upload_images/3270074-dbf32d05e92c5a3a.gif?imageMogr2/auto-orient/strip)
 
 ## License
