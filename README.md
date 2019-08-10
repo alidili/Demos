@@ -100,6 +100,8 @@
 
 [![](https://img.shields.io/badge/APK%20download-1.58M-green.svg)](https://github.com/alidili/Demos/raw/master/NDKDemo/NDKDemo.apk)
 
+[![](https://img.shields.io/badge/APK%20download-1.99M-green.svg)](https://github.com/alidili/Demos/raw/master/NDKLibraryDemo/NDKLibraryDemo.apk)
+
 [《Android NDK开发（一） 使用CMake构建工具进行NDK开发》](https://blog.csdn.net/kong_gu_you_lan/article/details/79091789)
 
 [《Android NDK开发（二） 使用ndk-build构建工具进行NDK开发》](http://blog.csdn.net/kong_gu_you_lan/article/details/79146817)
