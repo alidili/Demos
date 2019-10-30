@@ -146,14 +146,14 @@
 
 [![](https://img.shields.io/badge/APK%20download-2.09M-green.svg)](https://github.com/alidili/Demos/raw/master/IndicatorSeekBarDemo/IndicatorSeekBarDemo.apk)
 
-![IndicatorSeekBar](https://upload-images.jianshu.io/upload_images/3270074-181d7b17a90237d4.gif?imageMogr2/auto-orient/strip)
-
 [《Android自定义控件 带文字提示的SeekBar》](https://blog.csdn.net/kong_gu_you_lan/article/details/85112468)
+
+![IndicatorSeekBar](https://upload-images.jianshu.io/upload_images/3270074-181d7b17a90237d4.gif?imageMogr2/auto-orient/strip)
 
 ## License
 
 ```
-Copyright (C) 2017 YangLe
+Copyright (C) 2019 YangLe
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
