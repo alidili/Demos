@@ -150,6 +150,14 @@
 
 ![IndicatorSeekBar](https://upload-images.jianshu.io/upload_images/3270074-181d7b17a90237d4.gif?imageMogr2/auto-orient/strip)
 
+## 19. Android画板 半透明画笔 笔迹叠加效果 [源码](https://github.com/alidili/Demos/tree/master/TranslucentPaintDemo)
+
+[![](https://img.shields.io/badge/APK%20download-1.59M-green.svg)](https://github.com/alidili/Demos/raw/master/TranslucentPaintDemo/TranslucentPaintDemo.apk)
+
+[《Android画板 半透明画笔 笔迹叠加效果》](https://blog.csdn.net/kong_gu_you_lan/article/details/105572617)
+
+![叠加效果](https://upload-images.jianshu.io/upload_images/3270074-8a5dd9c86d810c10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## License
 
 ```
