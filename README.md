@@ -198,6 +198,12 @@
 
 ![MatrixImage](https://github.com/alidili/MatrixImage/blob/main/image/MatrixImageView.gif)
 
+## 25. 录音水波纹效果 [源码](https://github.com/alidili/WaveLine)
+
+[![](https://img.shields.io/badge/APK%20download-2.38M-green.svg)](https://github.com/alidili/WaveLine/raw/master/WaveLine.apk)
+
+![FlowLayout](https://github.com/alidili/WaveLine/blob/master/WaveLine.gif)
+
 ## 公众号
 
 ✨ **容华谢后Tech** ✨
