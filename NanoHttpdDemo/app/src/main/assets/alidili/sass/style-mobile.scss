@@ -1,0 +1,48 @@
+/*
+	Aerial 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+@import 'vars';
+@import 'mixins';
+
+/* Basic */
+
+	body {
+		min-width: 320px;
+	}
+
+	body, input, select, textarea {
+		font-size: 11pt;
+	}
+
+/* BG */
+
+	@include bg(500px);
+	
+/* Header */
+	
+	#header {
+		h1 {
+			font-size: 2.5em;
+		}
+		
+		p {
+			font-size: 1em;
+		}
+		
+		nav {
+			font-size: 1em;
+
+			a {
+				&:hover {
+					font-size: 1em;
+				}
+				
+				&:active {
+					font-size: 1em;
+				}
+			}
+		}
+	}

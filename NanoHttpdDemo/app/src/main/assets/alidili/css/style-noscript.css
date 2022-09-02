@@ -1,0 +1,27 @@
+/*
+	Aerial 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+/* Wrapper */
+
+	#wrapper {
+		opacity: 1;
+	}
+
+/* Overlay */
+
+	#overlay {
+		opacity: 1;
+	}
+
+/* Header */
+
+	#header {
+		opacity: 1;
+	}
+
+		#header nav li {
+			opacity: 1;
+		}

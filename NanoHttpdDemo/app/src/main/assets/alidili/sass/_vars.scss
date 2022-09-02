@@ -1,0 +1,27 @@
+//
+//	Aerial 1.0 by HTML5 UP
+//	html5up.net | @n33co
+//	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+//
+
+$color-bg:					#fff;
+$color-fg:					#fff;
+$color-nav-icon-hover-bg:	rgba(255,255,255,0.175);
+$color-nav-icon-hover-fg:	#fff;
+$color-nav-icon-active-bg:	rgba(255,255,255,0.35);
+$color-nav-icon-active-fg:	#fff;
+
+$duration-bg:				60s;
+$duration-wrapper:			3s;
+$duration-overlay:			1.5s;
+$duration-header:			1s;
+$duration-nav-icons:		0.5s;
+
+$delay-wrapper:				$duration-wrapper - 1s;
+$delay-overlay:				$delay-wrapper - 0.5s;
+$delay-header:				$delay-overlay + $duration-overlay - 0.75s;
+$delay-nav-icons:			$delay-header + $duration-header - 1s;
+$delay-nav-icon:			0.25s;
+
+$size-nav-icon-wrapper:		5.35em;
+$size-nav-icon:				1.75em;
