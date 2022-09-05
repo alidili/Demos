@@ -9,7 +9,9 @@ import java.io.FileInputStream
 
 /**
  * 本地服务
+ * <p>
  * Created by YangLe on 2022/9/2.
+ * Website：http://www.yangle.tech
  */
 class LocalServer private constructor() : NanoHTTPD("127.0.0.1", 8888) {
 
@@ -29,6 +31,8 @@ class LocalServer private constructor() : NanoHTTPD("127.0.0.1", 8888) {
         private const val MIME_MP4 = "video/mp4"
         private const val MIME_GIF = "image/gif"
         private const val MIME_MP3 = "audio/mpeg"
+        private const val MIME_SVG = "image/svg+xml"
+        private const val MIME_WOFF = "application/font-woff"
 
         fun getInstance(): LocalServer {
             if (instance == null) {
@@ -76,6 +80,13 @@ class LocalServer private constructor() : NanoHTTPD("127.0.0.1", 8888) {
 
             } else if (url.contains(".json")) {
                 return newFixedLengthResponse(OK, MIME_PLAINTEXT, inputStream, length)
+
+            } else if (url.contains(".svg")) {
+                return newFixedLengthResponse(OK, MIME_SVG, inputStream, length)
+
+            } else if (url.contains(".woff")) {
+                return newFixedLengthResponse(OK, MIME_WOFF, inputStream, length)
+
             } else {
                 return newFixedLengthResponse(OK, "*/*", inputStream, length)
             }

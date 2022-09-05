@@ -8,7 +8,9 @@ import java.io.InputStream
 
 /**
  * 文件工具
- * Created by YangLe on 2022/9/5.
+ * <p>
+ * Created by YangLe on 2022/9/2.
+ * Website：http://www.yangle.tech
  */
 object FileUtils {
 
