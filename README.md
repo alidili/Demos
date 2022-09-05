@@ -204,6 +204,10 @@
 
 ![FlowLayout](https://github.com/alidili/WaveLine/blob/master/WaveLine.gif)
 
+## 26.Android使用NanoHttpd搭建轻量级本地服务器 [源码](https://github.com/alidili/Demos/tree/master/NanoHttpdDemo)
+
+[![](https://img.shields.io/badge/APK%20download-5.06M-green.svg)](https://github.com/alidili/Demos/raw/master/NanoHttpdDemo/NanoHttpdDemo.apk)
+
 ## 公众号
 
 ✨ **容华谢后Tech** ✨
@@ -213,7 +217,7 @@
 ## License
 
 ```
-Copyright (C) 2021 YangLe
+Copyright (C) 2022 YangLe
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
