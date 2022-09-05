@@ -43,7 +43,6 @@ class LocalServer private constructor() : NanoHTTPD("127.0.0.1", 8888) {
             return newFixedLengthResponse(NOT_FOUND, MIME_PLAINTEXT, "session == null")
         }
         val url = session.uri
-        val method = session.method
         try {
             val file = File(mResourcePath + url)
             val length = file.length()
