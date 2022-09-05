@@ -206,7 +206,7 @@
 
 ## 26.Android使用NanoHttpd搭建轻量级本地服务器 [源码](https://github.com/alidili/Demos/tree/master/NanoHttpdDemo)
 
-[![](https://img.shields.io/badge/APK%20download-5.06M-green.svg)](https://github.com/alidili/Demos/raw/master/NanoHttpdDemo/NanoHttpdDemo.apk)
+[![](https://img.shields.io/badge/APK%20download-5.06M-green.svg)](https://github.com/alidili/Demos/blob/master/NanoHttpdDemo/NanaHttpdDemo.apk)
 
 ## 公众号
 
