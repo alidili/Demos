@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         // 拷贝网页文件到本地目录
         val webZipFile = File(getExternalFilesDir(this, ""), "alidili.zip")
         val webFile = File(getExternalFilesDir(this, "alidili"))
-        if (webFile.listFiles()?.size ?: 0 > 0) {
+        if ((webFile.listFiles()?.size ?: 0) > 0) {
             binding.wvContent.loadUrl("http://127.0.0.1:8888/index.html")
         } else {
             val result = copyAssetAndWrite(this, webFile.parent!!, webZipFile.name)
