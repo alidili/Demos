@@ -38,25 +38,6 @@ object AESUtils {
     /**
      * AES解密
      *
-     * @param data 将要解密的内容
-     * @param key  密钥
-     * @return 已经解密的内容
-     */
-    fun decrypt(data: ByteArray, key: ByteArray): ByteArray {
-        try {
-            val secretKeySpec = SecretKeySpec(key, "AES")
-            val cipher = Cipher.getInstance("AES/ECB/NoPadding")
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec)
-            return noPadding(cipher.doFinal(data), 0)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return byteArrayOf()
-    }
-
-    /**
-     * AES解密
-     *
      * @param data   将要解密的内容
      * @param key    密钥
      * @param length 数据长度

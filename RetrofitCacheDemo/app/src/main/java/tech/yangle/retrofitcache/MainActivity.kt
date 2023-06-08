@@ -16,7 +16,6 @@ import retrofit2.Retrofit
 import tech.yangle.retrofitcache.databinding.ActivityMainBinding
 import java.io.File
 
-
 /**
  * Retrofit增加接口缓存功能
  * <p>
@@ -90,12 +89,13 @@ class MainActivity : AppCompatActivity() {
             val cacheFile = File(HttpUtils.getCacheFile(mContext), cacheKey)
 
             // 缓存时间1小时
-            val cacheEnable = (System.currentTimeMillis() - cacheFile.lastModified()) < 3600000L
+            val cacheTime = 3600000L
+            val cacheEnable = (System.currentTimeMillis() - cacheFile.lastModified()) < cacheTime
             if (cacheEnable && cacheFile.exists() && cacheFile.length() > 0) {
                 Log.i(
                     "CacheInterceptor",
                     "[intercept] 缓存模式 url:${HttpUtils.getRequestUrl(request)} " +
-                            "过期时间:${HttpUtils.dateTimeToString(cacheFile.lastModified() + 3600000L)}"
+                            "过期时间:${HttpUtils.dateTimeToString(cacheFile.lastModified() + cacheTime)}"
                 )
                 val cache = SecurityUtils.decryptContent(cacheFile.readText(), key)
                 if (cache.isNotEmpty() && cache.startsWith("{") && cache.endsWith("}")) {
