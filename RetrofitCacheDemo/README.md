@@ -1,6 +1,8 @@
 ## Android Retrofit 给你的接口加上缓存
 
+[![](https://img.shields.io/badge/APK%20download-5.42M-green.svg)](https://github.com/alidili/Demos/raw/master/RetrofitCacheDemo/RetrofitCacheDemo.apk)
 
+[《Android Retrofit 给你的接口加上缓存》](https://blog.csdn.net/kong_gu_you_lan/article/details/131200501?spm=1001.2014.3001.5501)
 
 ## License
 
