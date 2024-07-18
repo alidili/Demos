@@ -214,6 +214,10 @@
 
 [《Android Retrofit 给你的接口加上缓存》](https://blog.csdn.net/kong_gu_you_lan/article/details/131200501?spm=1001.2014.3001.5501)
 
+## 28.Android IjkPlayer内核编译记（一）so库编译&使用 [源码](https://github.com/alidili/Demos/tree/master/IjkPlayerDemo)
+
+[![](https://img.shields.io/badge/APK%20download-39.6M-green.svg)](https://github.com/alidili/Demos/raw/master/IjkPlayerDemo/ijkplayer.apk)
+
 ## 公众号
 
 ✨ **容华谢后Tech** ✨
