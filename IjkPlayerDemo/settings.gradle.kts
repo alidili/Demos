@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "IjkPlayerDemo"
 include(":app")
- 
+include(":ijkplayer")
