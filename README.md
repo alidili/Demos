@@ -218,6 +218,8 @@
 
 [![](https://img.shields.io/badge/APK%20download-39.6M-green.svg)](https://github.com/alidili/Demos/raw/master/IjkPlayerDemo/ijkplayer.apk)
 
+[《Android IjkPlayer内核编译记（一）so库编译&使用》](https://blog.csdn.net/kong_gu_you_lan/article/details/140528831)
+
 ## 公众号
 
 ✨ **容华谢后Tech** ✨
@@ -227,7 +229,7 @@
 ## License
 
 ```
-Copyright (C) 2022 YangLe
+Copyright (C) 2024 YangLe
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

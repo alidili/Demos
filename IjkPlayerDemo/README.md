@@ -2,6 +2,8 @@
 
 [![](https://img.shields.io/badge/APK%20download-39.6M-green.svg)](https://github.com/alidili/Demos/raw/master/IjkPlayerDemo/ijkplayer.apk)
 
+[《Android IjkPlayer内核编译记（一）so库编译&使用》](https://blog.csdn.net/kong_gu_you_lan/article/details/140528831)
+
 ## License
 
 ```
