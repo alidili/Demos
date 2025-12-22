@@ -5,6 +5,10 @@ plugins {
 
 android {
     namespace = "com.yangle.ashmem"
+    buildFeatures {
+        aidl = true
+    }
+
     compileSdk {
         version = release(36)
     }
@@ -24,6 +28,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
         }
     }
 
