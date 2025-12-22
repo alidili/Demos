@@ -14,9 +14,7 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO,  LOG_TAG, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
-/**
- * 当前进程mmap后得到的共享内存指针
- */
+// 当前进程mmap后得到的共享内存指针
 static SharedBlock *g_block = nullptr;
 
 /**
@@ -106,7 +104,7 @@ Java_com_yangle_ashmem_NativeShm_read(JNIEnv* env, jobject, jint fd, jbyteArray 
     if (!g_block) {
         void *addr = mmap(nullptr, sizeof(SharedBlock), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
         if (addr == MAP_FAILED) {
-            LOGE("client mmap failed");
+            LOGE("client mmap failed, fd=%d", fd);
             return -1;
         }
         g_block = reinterpret_cast<SharedBlock *>(addr);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <semaphore.h>
-#include <stdint.h>
+#include <cstdint>
 
 #define SHM_DATA_SIZE (1024 * 1024)
 
