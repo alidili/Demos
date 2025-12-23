@@ -18,17 +18,24 @@ class ShmService : Service() {
 
     private val native = NativeShm()
     private var client: IShmService? = null
+    private var mFd: Int? = null
 
     override fun onBind(p0: Intent?): IBinder? {
         return object : IShmService.Stub() {
             override fun startTransfer(callback: IShmCallback?) {
                 // 创建共享内存
-                val fd = native.createShm()
+                mFd = native.createShm()
                 // 将文件描述符回调给接收端
-                val pfd = ParcelFileDescriptor.fromFd(fd)
+                val pfd = ParcelFileDescriptor.fromFd(mFd!!)
                 callback?.onShmReady(pfd)
                 // 发送文件
-                sendFile("test.jpg", fd)
+                sendFile("test.jpg", mFd!!)
+            }
+
+            override fun endTransfer() {
+                if (mFd != null) {
+                    native.destroy(mFd!!)
+                }
             }
         }.also {
             client = it

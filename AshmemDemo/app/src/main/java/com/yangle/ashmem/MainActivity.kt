@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                 while (true) {
                     val len = native.read(fd, buf)
                     if (len < 0) {
-                        native.destroy(fd)
+                        service.endTransfer()
                         break
                     }
                     fos.write(buf, 0, len)

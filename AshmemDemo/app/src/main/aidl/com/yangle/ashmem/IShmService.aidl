@@ -12,4 +12,9 @@ interface IShmService {
      * @params callback 回调
      */
     void startTransfer(in IShmCallback callback);
+
+    /**
+     * 结束传输
+     */
+    void endTransfer();
 }
