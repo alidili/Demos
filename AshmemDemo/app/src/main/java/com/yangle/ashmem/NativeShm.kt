@@ -35,7 +35,7 @@ class NativeShm {
     /**
      * 读取数据
      *
-     * @param fd 文件描述符
+     * @param fd  文件描述符
      * @param out 数据
      */
     external fun read(fd: Int, out: ByteArray): Int

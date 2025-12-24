@@ -26,7 +26,7 @@ Java_com_yangle_ashmem_NativeShm_createShm(JNIEnv *, jobject) {
     // 创建共享内存区域
     int fd = open("/dev/ashmem", O_RDWR);
     if (fd < 0) {
-        LOGE("ashmem_create_region failed");
+        LOGE("ashmem create region failed");
         return -1;
     }
     if (ioctl(fd, ASHMEM_SET_NAME, "shared_memory") != 0) {
@@ -89,7 +89,6 @@ Java_com_yangle_ashmem_NativeShm_write(JNIEnv *env, jobject, jbyteArray data, ji
 
     // 离开临界区
     sem_post(&g_block->sem_mutex);
-
     // V(full)，通知 Consumer 可以读取
     sem_post(&g_block->sem_full);
     return len;
