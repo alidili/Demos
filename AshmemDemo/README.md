@@ -1,6 +1,8 @@
-> 转载请注明出处：https://www.jianshu.com/p/48c5826359ef
->
-> 本文出自 [容华谢后的博客](https://www.jianshu.com/p/48c5826359ef)
+## Android基于共享内存实现跨进程大文件传输
+
+[![](https://img.shields.io/badge/APK%20download-14.2M-green.svg)](https://github.com/alidili/Demos/raw/master/AshmemDemo/AshmemDemo.apk)
+
+[《Android基于共享内存实现跨进程大文件传输》](https://juejin.cn/post/7587264707284877322)
 
 # 0.写在前面
 
@@ -236,7 +238,11 @@ Java_com_yangle_ashmem_NativeShm_destroy(JNIEnv*, jobject, jint fd) {
 
 # 2.测试
 
-到这里共享内存传输的基本功能就完成了，写个例子来测试下，定义一个 ShmService（android:process=":shm" ） 进程作为数据发送方，MainActivity 作为数据接收方，流程如下：
+到这里共享内存传输的基本功能就完成了，写个例子来测试下，定义一个 ShmService（android:process=":shm" ） 进程作为数据发送方，MainActivity 作为数据接收方，先看下项目结构：
+
+![项目结构](https://upload-images.jianshu.io/upload_images/3270074-227545941f24222b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+流程如下：
 
 - 1.MainActivity 与 ShmService 进行服务绑定，绑定成功后调用 AIDL 的 startTransfer 方法通知 ShmService 开始传输
 
@@ -363,6 +369,41 @@ class ShmService : Service() {
 }
 ```
 
+**AIDL 如下：**
+
+```
+interface IShmService {
+    /**
+     * 开始传输
+     *
+     * @params callback 回调
+     */
+    void startTransfer(in IShmCallback callback);
+
+    /**
+     * 结束传输
+     */
+    void endTransfer();
+}
+
+interface IShmCallback {
+   /**
+     * 共享内存初始化完成
+     *
+     * @params pfd 文件描述符
+     */
+    void onShmReady(in ParcelFileDescriptor pfd);
+}
+```
+
+**注意在 onShmReady 方法中需要传递 ParcelFileDescriptor 类型，不能直接传递 int 类型的 fd，ParcelFileDescriptor 内部会自动实现 Binder 的自动映射。**
+
+- Binder 会把 fd 复制到目标进程，目标进程拿到的 ParcelFileDescriptor 对象里有一个新的 fd。
+
+- 系统会在底层做 fd 映射和引用计数，保证两个进程都可以安全访问同一个底层资源。
+
+- 它不仅能封装 ashmem fd，也能封装普通文件、socket、pipe 等。
+
 # 3.PV操作
 
 在数据传输中使用PV信号量来控制生产者-消费者的读写操作，在这里再梳理下流程：
@@ -396,3 +437,20 @@ class ShmService : Service() {
 GitHub地址：https://github.com/alidili/Demos/tree/master/AshmemDemo
 
 到这里，Android消息推送SSE方案就介绍完了，如有问题可以给我留言评论或者在GitHub中提交Issues，谢谢！
+
+## License
+
+```
+Copyright (C) 2025 YangLe
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

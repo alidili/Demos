@@ -220,6 +220,12 @@
 
 [《Android IjkPlayer内核编译记（一）so库编译&使用》](https://blog.csdn.net/kong_gu_you_lan/article/details/140528831)
 
+## 29.Android基于共享内存实现跨进程大文件传输 [源码](https://github.com/alidili/Demos/tree/master/AshmemDemo)
+
+[![](https://img.shields.io/badge/APK%20download-14.2M-green.svg)](https://github.com/alidili/Demos/raw/master/AshmemDemo/AshmemDemo.apk)
+
+[《Android基于共享内存实现跨进程大文件传输》](https://juejin.cn/post/7587264707284877322)
+
 ## 公众号
 
 ✨ **容华谢后Tech** ✨
